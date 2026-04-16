@@ -2,12 +2,15 @@
 {
     internal class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
+            int i = 0;
+            while (i < 10)
             {
                 Console.WriteLine("Hello, World!");
+                i++;
             }
+
 
         }
     }
