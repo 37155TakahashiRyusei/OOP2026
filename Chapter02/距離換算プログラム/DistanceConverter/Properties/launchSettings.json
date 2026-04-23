@@ -2,7 +2,7 @@
   "profiles": {
     "DistanceConverter": {
       "commandName": "Project",
-      "commandLineArgs": "-tom 4 12"
+      "commandLineArgs": "-tom 20 40"
     }
   }
 }
