@@ -2,19 +2,41 @@
     internal class Program {
 
         static void Main(string[] args) {
-            var numbers = new[] { 5, 3, 9, 6, 7, 5, 8, 1, 0, 5, 10, 4 };
-            var count = Count(numbers,(n) =>  n % 4  == 0 || n % 5 == 0);
-            Console.WriteLine(count);
-        }
-
-        static int Count(int[] numbers, Predicate<int> judge) {
-            var count = 0;
-            foreach (var n in numbers) {
-                if (judge(n) == true) {
-                    count++;
-                }
+            var cities = new List<string> {
+                "Tokyo",
+                "New Delhi",
+                "Bangkok",
+                "London",
+                "Paris",
+                "Berlin",
+                "Canberra",
+                "Hong Kong",
+            };
+            //6文字以上
+            var name = cities.Exists(s => 6 <= s.Length);
+            Console.WriteLine(name);
+            var names = cities.FindAll(s => 6 <= s.Length);
+            foreach (var s in names) {
+                Console.WriteLine(s);
             }
-            return count;
+
+            //'o'を含む
+            var exists1 = cities.Exists(s => s.Contains('o'));
+            Console.WriteLine(exists1);
+            
+            //最後にnが付く
+            var exist = cities.Exists(s => s.EndsWith('n'));
+            Console.WriteLine(exist);
+            
+            //1行で出力
+            var exists = cities.Exists(s => 6 <= s.Length && s.Contains('o') && s.EndsWith('n'));
+            Console.WriteLine(exists);
+            //var index = cities.Find(s => 0 == 'o');
+            //Console.WriteLine(index);
+
+            //(List限定)短い方↓
+            //var exists = cities.FindAll(s => s[0] == 'B');
+            //exists.ForEach(s => Console.WriteLine(s));
         }
     }
 }
