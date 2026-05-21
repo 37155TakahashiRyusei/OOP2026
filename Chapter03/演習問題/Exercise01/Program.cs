@@ -21,14 +21,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(List<int> numbers) {
-            //var num = numbers.Exists(s =>    );
-            //if(num == true) {
-            //    Console.WriteLine("存在しています");
-            //}
+            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+            if (exists == true) {
+                Console.WriteLine("存在しています");
+            } else {
+                Console.WriteLine("存在していません");
+            }
         }
 
         private static void Exercise2(List<int> numbers) {
-            //var n = numbers.ForEach(s => );
+            //double n = numbers.ForEach(s => );
         }
 
         private static void Exercise3(List<int> numbers) {
