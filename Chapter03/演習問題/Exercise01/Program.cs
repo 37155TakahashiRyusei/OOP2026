@@ -32,13 +32,15 @@ namespace Exercise01 {
 
         private static void Exercise2(List<int> numbers) {
             Console.WriteLine("---3.1.2---");
-            numbers.ForEach(n => Console.WriteLine(n / 2.0));
-
+            numbers.ForEach(s => Console.WriteLine(s / 2.0));
         }
 
         private static void Exercise3(List<int> numbers) {
             Console.WriteLine("---3.1.3---");
-
+            var query = numbers.Where(s => 50 <= s);
+            foreach (var item in query) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise4(List<int> numbers) {
