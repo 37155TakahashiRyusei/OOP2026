@@ -45,7 +45,10 @@ namespace Exercise01 {
 
         private static void Exercise4(List<int> numbers) {
             Console.WriteLine("---3.1.4---");
-
+            var exist2 = numbers.Select(s => s * 2);
+            foreach (var item in exist2) {
+                Console.WriteLine(item);
+            }
         }
     }
 }
