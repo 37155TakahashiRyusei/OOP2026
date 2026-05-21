@@ -28,17 +28,18 @@ namespace Exercise02 {
             //できたらGitのコメント「問題3.2.1完成」
             Console.Write("入力：");
             var text = Console.ReadLine();
-            var find = cities.FindIndex(s => s.Contains(text));
-            if (find <= cities.Count) {
-                Console.WriteLine(find);
-            } else {
-                Console.WriteLine("-1");
-            }
+            var find = cities.FindIndex(s => s.Equals(text));
+            Console.WriteLine(find);
+            //if (find <= cities.Count) {
+            //    Console.WriteLine(find);
+            //} else {
+            //    Console.WriteLine("-1");
+            //}
         }
 
         private static void Exercise2_2(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.2完成」
-	        
+            //できたらGitのコメント「問題3.2.2完成」
+            var cnt = cities.Count();
         }
 
         private static void Exercise2_3(List<string> cities) {
