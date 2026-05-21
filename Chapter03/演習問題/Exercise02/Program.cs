@@ -39,7 +39,8 @@ namespace Exercise02 {
 
         private static void Exercise2_2(List<string> cities) {
             //できたらGitのコメント「問題3.2.2完成」
-            var cnt = cities.Count();
+            var cnt = cities.Count(s => s.Contains('o'));
+            Console.WriteLine(cnt);
         }
 
         private static void Exercise2_3(List<string> cities) {
