@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36623.8
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11709.299 stable
+VisualStudioVersion = 18.5.11709.299
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter00", "Chapter00", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
 EndProject
@@ -50,10 +48,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise01", "Chapter03\演習問題\Exercise01\Exercise01.csproj", "{464B30C5-D8DF-47AA-B6D4-B6E61A97E9D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02", "Chapter03\演習問題\Exercise02\Exercise02.csproj", "{9661600F-9E2E-EC39-AFA2-64DBC15CE967}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter03", "Chapter03", "{26CAE1F7-C6CC-4942-A2CB-8033AA17A261}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise02", "Chapter03\Exercise02\Exercise02.csproj", "{1DF94DF2-A772-4248-9194-89FE8F1A242D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,10 +103,6 @@ Global
 		{9661600F-9E2E-EC39-AFA2-64DBC15CE967}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9661600F-9E2E-EC39-AFA2-64DBC15CE967}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9661600F-9E2E-EC39-AFA2-64DBC15CE967}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1DF94DF2-A772-4248-9194-89FE8F1A242D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DF94DF2-A772-4248-9194-89FE8F1A242D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DF94DF2-A772-4248-9194-89FE8F1A242D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DF94DF2-A772-4248-9194-89FE8F1A242D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,7 +126,6 @@ Global
 		{0D0A78D4-97BD-437F-B2CC-4AAAD3E24319} = {04D8A68A-464E-4DA7-83E8-8A1B20529F11}
 		{464B30C5-D8DF-47AA-B6D4-B6E61A97E9D5} = {0D0A78D4-97BD-437F-B2CC-4AAAD3E24319}
 		{9661600F-9E2E-EC39-AFA2-64DBC15CE967} = {0D0A78D4-97BD-437F-B2CC-4AAAD3E24319}
-		{1DF94DF2-A772-4248-9194-89FE8F1A242D} = {26CAE1F7-C6CC-4942-A2CB-8033AA17A261}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDE9C908-400E-4BB0-A9EC-FB1C2CD5028E}
