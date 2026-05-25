@@ -1,0 +1,79 @@
+﻿
+
+namespace Section04 {
+    internal class Program {
+        static void Main(string[] args) {
+
+            #region nullの判定
+            string? name = null;
+
+            if (name is null)
+                Console.WriteLine("nameはnullです");
+            #endregion
+
+            #region null合体演算子
+            string code = "12345";
+            //GetMessage()メソッドお戻り値がnullだったら
+            //DefaultMessage()メソッドが実行される
+            var message = GetMessage(code) ?? DefaultMessage();
+            #endregion
+
+            #region null合体代入演算子
+            message = null;
+            message ??= DefaultMessage();
+
+            #endregion
+
+            #region null条件演算子
+            Sale? sale = new Sale {
+                ShopName = "新宿店",
+                ProductCategory = "洋菓子",
+                Amount = 523100,
+            };
+            sale = null;
+
+            int? amount = sale?.Amount;
+            Console.WriteLine("売上高:" + amount);
+            #endregion
+            //[nullに関するイディオムサンプル]でコメント
+
+            #region 2つの要素を入れ替える
+            int a = 10;
+            int b = 20;
+            int c = 30;
+            Console.WriteLine("入れ替え前");
+            Console.WriteLine("a = " + a + "b = " + b);
+
+            ////入れ替えの書き方の解説
+            //var temp = a;
+            //a = b;
+            //b = a;
+
+            //入れ替え 別の書き方
+            (b, a ,c) = (a, b , 999);
+
+            Console.WriteLine("入れ替え後");
+            Console.WriteLine("a = " + a + "b = " + b + "c = " + c);
+            #endregion
+        }
+
+        private static string? DefaultMessage() {
+            return " DefaultMessage";
+        }
+
+        private static string? GetMessage(string code) {
+            return code;
+        }
+    }
+    //売り上げクラス
+    public class Sale {
+        //店舗名
+        public string ShopName { get; set; } = string.Empty;
+
+        //商品カテゴリ
+        public string ProductCategory { get; set; } = string.Empty;
+
+        //売上高
+        public int Amount { get; set; }
+    }
+}

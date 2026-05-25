@@ -54,11 +54,16 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
             //p135を参照する
-            var cty = cities
+            var cts = cities
                 .Where(s => s.StartsWith('B'))
-                .Select(s => s.Length);
-            foreach (var s in cty) {
-                Console.WriteLine(s);
+                //.Select(s => s.Length);
+                .Select(s => new { s, s.Length });//←別の書き方
+            //foreach (var s in cts) {
+            //    Console.WriteLine(s);
+            //}
+            foreach (var data in cts) {
+                Console.WriteLine(data.s + ":" + data.Length + "文字");//←別の書き方
+                //[3章終了]でコメント
             }
         }
     }
