@@ -54,14 +54,12 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
             //p135を参照する
-
-            //if(string.StartsWith('B')) {
-
-            //}
-            //var cty = cities
-            //    .Where(s => s.Contains('o')).ToArray()
-            //    //.Select(s => )
-
+            var cty = cities
+                .Where(s => s.StartsWith('B'))
+                .Select(s => s.Length);
+            foreach (var s in cty) {
+                Console.WriteLine(s);
+            }
         }
     }
 }
