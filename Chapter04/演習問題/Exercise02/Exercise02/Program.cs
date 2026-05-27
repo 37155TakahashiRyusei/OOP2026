@@ -35,7 +35,6 @@ namespace Exercise02 {
             }
         }
 
-        
 
         private static void Exercise2() {
             //switch文を使用(4-10)参考にする
@@ -65,7 +64,7 @@ namespace Exercise02 {
                     break;
             }
         }
-        
+
 
         private static void Exercise3() {
             //switch式を使用(4-11)参考にする
