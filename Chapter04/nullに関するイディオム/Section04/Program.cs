@@ -55,6 +55,7 @@ namespace Section04 {
             Console.WriteLine("入れ替え後");
             Console.WriteLine("a = " + a + "b = " + b + "c = " + c);
             #endregion
+            //２つを入れ替える コメント
         }
 
         private static string? DefaultMessage() {
