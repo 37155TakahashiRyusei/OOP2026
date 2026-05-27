@@ -46,13 +46,15 @@ namespace Exercise01 {
             }
         }
 
-       
-
-
 
         private static void Exercise2(List<string> langs) {
             Console.WriteLine("\n ---4.1.2---");
             //LINQを使用する（where）
+            var wh = langs.Where(s => s.Contains('S'));
+            Console.WriteLine();
+            //foreach (var item in wh) {
+            //    Console.WriteLine(item);
+            //}
         }
 
         private static void Exercise3(List<string> langs) {
