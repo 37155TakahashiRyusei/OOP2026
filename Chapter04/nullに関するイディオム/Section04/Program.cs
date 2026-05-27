@@ -16,6 +16,7 @@ namespace Section04 {
             //GetMessage()メソッドお戻り値がnullだったら
             //DefaultMessage()メソッドが実行される
             var message = GetMessage(code) ?? DefaultMessage();
+            Console.WriteLine(message);
             #endregion
 
             #region null合体代入演算子

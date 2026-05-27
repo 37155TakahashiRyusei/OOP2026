@@ -1,4 +1,5 @@
 ﻿
+
 namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
@@ -58,6 +59,23 @@ namespace Exercise01 {
 
         private static void Exercise3(List<string> langs) {
             Console.WriteLine("\n ---4.1.3---");
+            var lang = langs.Find(s => s.Length == 10);
+            //if () {
+            //    Console.WriteLine(lang);
+            //} else {
+            //    Console.WriteLine("unknown");
+            //}
+
+            var message = Known(langs) ?? Unknown();
+            Console.WriteLine(message);
+        }
+
+        private static object Unknown() {
+            return "null";
+        }
+
+        private static object? Known(object code) {
+            return code;
         }
     }
 }
