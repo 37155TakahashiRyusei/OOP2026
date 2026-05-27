@@ -16,9 +16,9 @@ namespace Exercise02 {
             //if-else文を使用(4-9)参考にする
             Console.Write("入力：");
             var line = Console.ReadLine();
-            if (!int.TryParse(line, out int num)) {
+            if (!int.TryParse(line, out int num)) {  //!で反転
                 Console.WriteLine("入力に誤りがあります");
-                return; // ここで終了      
+                return; // returnで終了する      
             }
                  
             if (num < 0) {
