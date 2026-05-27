@@ -35,7 +35,7 @@ namespace Section04 {
             int? amount = sale?.Amount;
             Console.WriteLine("売上高:" + amount);
             #endregion
-            //[nullに関するイディオムサンプル]でコメント
+           
 
             #region 2つの要素を入れ替える
             int a = 10;
