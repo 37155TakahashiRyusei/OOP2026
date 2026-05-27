@@ -11,17 +11,17 @@ namespace Exercise02 {
         }
 
         private static void Exercise1() {
-            //if-else文を使用
-            
+            //if-else文を使用(4-9)参考にする
+
         }
 
         private static void Exercise2() {
-            //switch文を使用
+            //switch文を使用(4-10)参考にする
 
         }
 
         private static void Exercise3() {
-            //switch式を使用
+            //switch式を使用(4-11)参考にする
 
 
         }
