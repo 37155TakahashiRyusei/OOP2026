@@ -24,10 +24,10 @@ namespace Exercise02 {
             if (num < 0) {
                 Console.WriteLine(num);
 
-            } else if (num >= 0 && num < 100) {
+            } else if (num < 100) {
                 Console.WriteLine(num * 2);
 
-            } else if (num >= 100 && num < 500) {
+            } else if (num < 500) {
                 Console.WriteLine(num * 3);
 
             } else {
@@ -77,11 +77,11 @@ namespace Exercise02 {
             }
 
             var num2 = int.Parse(line);
-            var text = num switch {
-                < 0 => num.ToString(),
-                >= 0 and < 100 => (num * 2).ToString(),
-                >= 100 and < 500 => (num * 3).ToString(),
-                _ => num.ToString()
+            var text = num2 switch {
+                < 0 => num2,
+                < 100 => num2 * 2,
+                < 500 => num2 * 3,
+                _ => num2
             };
             Console.WriteLine(text);
         }
