@@ -51,11 +51,11 @@ namespace Exercise02 {
                     Console.WriteLine(num);
                     break;
 
-                case >= 0 and < 100:
+                case < 100:
                     Console.WriteLine(num * 2);
                     break;
 
-                case >= 100 and < 500:
+                case　< 500:
                     Console.WriteLine(num * 3);
                     break;
 
