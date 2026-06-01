@@ -26,14 +26,16 @@ namespace Exercise01 {
         //一行での書き方
         //public bool Is21Century => Year >= 2001 && Year <= 2100; 
 
-        ////5.1.3
-        //public YearMonth AddOneMonth() {
-        //    int y;
-        //    y = (12 - Year);
-        //    return new YearMonth 
-        //}
+        //5.1.3
+        public YearMonth AddOneMonth() {
+            if (Month ==12) {
+                return new YearMonth(Year, Month - 11);
+            } else {
+                return new YearMonth(Year, Month + 1);
+            }
+        }
 
-        ////5.1.4
+        //5.1.4
         //public override string ToString() =>
 
 
