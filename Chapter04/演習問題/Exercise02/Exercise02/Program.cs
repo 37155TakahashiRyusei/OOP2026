@@ -16,23 +16,37 @@ namespace Exercise02 {
             //if-else文を使用(4-9)参考にする
             Console.Write("入力：");
             var line = Console.ReadLine();
-            if (!int.TryParse(line, out int num)) {  //!で反転
-                Console.WriteLine("入力に誤りがあります");
-                return; // returnで終了する      
+            if (int.TryParse(line, out int num)) {  
+               
+                if (num < 0) {
+                    Console.WriteLine(num);
+
+                } else if (num < 100) {
+                    Console.WriteLine(num * 2);
+
+                } else if (num < 500) {
+                    Console.WriteLine(num * 3);
+
+                } else {
+                    Console.WriteLine(num);
+                }
+                //return; // returnで終了する      
+            } else {
+                Console.WriteLine("入力値に誤りがあります");
             }
                  
-            if (num < 0) {
-                Console.WriteLine(num);
+            //if (num < 0) {
+            //    Console.WriteLine(num);
 
-            } else if (num < 100) {
-                Console.WriteLine(num * 2);
+            //} else if (num < 100) {
+            //    Console.WriteLine(num * 2);
 
-            } else if (num < 500) {
-                Console.WriteLine(num * 3);
+            //} else if (num < 500) {
+            //    Console.WriteLine(num * 3);
 
-            } else {
-                Console.WriteLine(num);
-            }
+            //} else {
+            //    Console.WriteLine(num);
+            //}
         }
 
 
@@ -42,7 +56,7 @@ namespace Exercise02 {
             var line = Console.ReadLine();
 
             if (!int.TryParse(line, out int num)) {
-                Console.WriteLine("入力に誤りがあります");
+                Console.WriteLine("入力値に誤りがあります");
                 return;
             }
 
@@ -71,19 +85,31 @@ namespace Exercise02 {
             Console.Write("入力：");
             var line = Console.ReadLine();
 
-            if (!int.TryParse(line, out int num)) {
-                Console.WriteLine("入力に誤りがあります");
-                return;
+            if (int.TryParse(line, out var num)) {
+                var outNum = num switch {
+                    < 0 => num,
+                    < 100 => num * 2,
+                    < 500 => num * 3,
+                    _ => num
+                };
+                Console.WriteLine(outNum);
+            } else {
+                Console.WriteLine("入力値に誤りがあります");
             }
 
-            var num2 = int.Parse(line);
-            var text = num2 switch {
-                < 0 => num2,
-                < 100 => num2 * 2,
-                < 500 => num2 * 3,
-                _ => num2
-            };
-            Console.WriteLine(text);
+            //if (!int.TryParse(line, out int num)) {
+            //    Console.WriteLine("入力に誤りがあります");
+            //    return;
+            //}
+
+            //var num2 = int.Parse(line);
+            //var text = num2 switch {
+            //    < 0 => num2,
+            //    < 100 => num2 * 2,
+            //    < 500 => num2 * 3,
+            //    _ => num2
+            //};
+            //Console.WriteLine(text);
         }
     }
 }
