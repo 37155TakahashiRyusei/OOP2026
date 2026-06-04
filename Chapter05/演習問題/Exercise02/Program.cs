@@ -14,11 +14,11 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
 
-            Console.WriteLine("5.2.4");
+            Console.WriteLine("\n5.2.4");
             Exercise4(ymCollection);
 
 
-            Console.WriteLine("5.2.5");
+            Console.WriteLine("\n5.2.5");
             Exercise5(ymCollection);
         }
 
@@ -29,12 +29,29 @@ namespace Exercise02 {
             }
         }
 
+        //5.2.3
+        private static YearMonth? FindFirst21C(YearMonth[] ymCollection) {
+            foreach (var item in ymCollection) {
+                if (item.Is21Century) {
+                    return item; //21世紀が見つかったら終了
+                }
+            }
+            return null; //21世紀が見つからなかった場合
+        }
+
         private static void Exercise4(YearMonth[] ymCollection) {
-            
+            //出来た人はnull合体演算子、null条件演算子を使って一行で記述
+            var n = FindFirst21C(ymCollection);
+
+            //if () {
+            //    Console.WriteLine(n); //21世紀が見つかったら終了
+            //} else {
+
+            //}
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-            
+
         }
     }
 }
