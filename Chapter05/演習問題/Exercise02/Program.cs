@@ -40,14 +40,14 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
+            var ym = FindFirst21C(ymCollection);
+
+            if (ym is null) {
+                Console.WriteLine("21世紀のデータはありません");
+            } else {
+                Console.WriteLine(ym.Year + "年"); //21世紀が見つかったら終了
+            }
             //出来た人はnull合体演算子、null条件演算子を使って一行で記述
-            var n = FindFirst21C(ymCollection);
-
-            //if () {
-            //    Console.WriteLine(n); //21世紀が見つかったら終了
-            //} else {
-
-            //}
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
