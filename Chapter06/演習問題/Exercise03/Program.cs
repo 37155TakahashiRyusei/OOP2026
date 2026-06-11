@@ -28,26 +28,37 @@ namespace Exercise03 {
 
             var count = text.Count(c => c == ' ');
             Console.WriteLine(count);
+            Console.WriteLine();//改行用
         }
 
         private static void Exercise2(string text) {
             //p142参考
             var replaced = text.Replace("big", "small");
             Console.WriteLine(replaced);
+            Console.WriteLine();//改行用
         }
 
         private static void Exercise3(string text) {
-            
+
+
+
+            Console.WriteLine();//改行用
         }
 
         private static void Exercise4(string text) {
-            
+            var cnt = text.Split(' ');
+            Console.WriteLine(cnt.Length);
+            Console.WriteLine();//改行用
         }
 
         private static void Exercise5(string text) {
-            
+
+
+
+            Console.WriteLine();//改行用
         }
 
+        //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
             
         }
