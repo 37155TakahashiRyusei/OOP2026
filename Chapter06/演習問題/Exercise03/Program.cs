@@ -46,15 +46,24 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            var cnt = text.Split(' ');
-            Console.WriteLine(cnt.Length);
+            var word = text.Split(' ');
+            Console.WriteLine(word.Length);
             Console.WriteLine();//改行用
         }
 
         private static void Exercise5(string text) {
+            var words = text.Split(' ').Where(s => s.Length <= 4);
+            foreach (var item in words) {
+                Console.WriteLine(item);
+            }
 
+            //text.Split(' ').Where(s => s.Length <= 4).ToList().ForEach(Console.WriteLine);即時実行しても良い時の書き方
 
-
+            //for (int i = 0; i < text.Length; i++) {
+            //    if (words[i] <= 4) {
+            //        Console.WriteLine(words);
+            //    }
+            //}
             Console.WriteLine();//改行用
         }
 
