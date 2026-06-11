@@ -93,14 +93,16 @@ namespace Exercise03 {
                 array[alph - 'a']++;
             }
             for (char ch = 'a'; ch <= 'z'; ch++) {
-                Console.WriteLine($"{ ch}; {array[ch - 'a']}");
+                Console.WriteLine($"{ ch}: {array[ch - 'a']}");
             }
-           
 
-
-
+            Console.WriteLine();//改行用
 
             //'a'から順にカウントして集計
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{str.Count(c => c == ch)}");
+                //Console.WriteLine($"{ch}:{str.Count(ch.Equals)}");
+            }
         }
     }
 }
