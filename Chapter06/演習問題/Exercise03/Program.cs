@@ -41,13 +41,26 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            var words = text.Split(' ');
-            var array = text.ToArray();
-            var sb = new StringBuilder();
-            foreach (var word in array) {
-                Console.Write(word);
-            }
+            var array = text.Split(' ');
+            var sb = new StringBuilder(array[0]);
 
+            foreach (var word in array.Skip(1)) {
+                sb.Append(" ");
+                sb.Append(word);
+            }
+            //末尾はピリオド（.）で終わる
+            Console.WriteLine(sb + ".");
+
+            //var result = String.Join(text);
+            //Console.WriteLine(result);
+
+            //words.ToArray();
+            //var array = text.ToArray();
+            //var sb = new StringBuilder();
+            //foreach (var word in words) {
+            //    Console.Write(sb.Append(word) + ".");
+            //}
+            //Console.WriteLine(sb + ".");
 
             Console.WriteLine();//改行用
         }

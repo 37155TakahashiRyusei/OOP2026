@@ -1,8 +1,15 @@
-﻿namespace Exercise04 {
+﻿using System.Text;
+
+namespace Exercise04 {
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
+            var sb = new StringBuilder();
 
+            foreach (var word in line) {
+                sb.Append(word);
+                Console.Write(word);
+            }
 
 
 
