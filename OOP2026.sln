@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "文字列の連結と分割
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Section05", "Chapter06\文字列の連結と分割\Section05\Section05.csproj", "{32683B27-3D50-421C-B027-2A336F3417AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise04", "Chapter06\演習問題\Exercise04\Exercise04.csproj", "{8758FBDB-9295-0DA5-31B6-DA01667F06FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -201,6 +203,10 @@ Global
 		{32683B27-3D50-421C-B027-2A336F3417AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32683B27-3D50-421C-B027-2A336F3417AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32683B27-3D50-421C-B027-2A336F3417AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8758FBDB-9295-0DA5-31B6-DA01667F06FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8758FBDB-9295-0DA5-31B6-DA01667F06FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8758FBDB-9295-0DA5-31B6-DA01667F06FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8758FBDB-9295-0DA5-31B6-DA01667F06FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -245,6 +251,7 @@ Global
 		{766DC129-B7E6-6BE5-67FF-02794A6C9D6A} = {03E9053B-35A3-4078-9925-F2EAC07D1E91}
 		{6E353CAD-1D83-4D3C-B862-DB66A8E2D13D} = {C96E4699-2CCF-4495-8D0C-24009A49B89B}
 		{32683B27-3D50-421C-B027-2A336F3417AE} = {6E353CAD-1D83-4D3C-B862-DB66A8E2D13D}
+		{8758FBDB-9295-0DA5-31B6-DA01667F06FB} = {03E9053B-35A3-4078-9925-F2EAC07D1E91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDE9C908-400E-4BB0-A9EC-FB1C2CD5028E}
