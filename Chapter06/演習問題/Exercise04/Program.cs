@@ -1,21 +1,40 @@
 ﻿using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Exercise04 {
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
-            var sb = new StringBuilder();
 
-            foreach (var word in line) {
-                sb.Append(word);
-                Console.Write(word);
+            var array = line.Split(';', '=');
+            //Console.WriteLine(array);
+            //var array2 = line.Split('='); 
+
+            var sb = new StringBuilder();
+            sb.Append(array);
+
+            for (int i = 0; i < line.Length; i++) {
+                //array[i].Split('=');
+                Console.WriteLine(array[i]);
+
             }
+
+            //int i = 0;
+            //foreach (var word in array) {
+            //    sb.Append(word + ":");
+            //    // Console.Write(array[i]);
+            //    Console.WriteLine(word);
+            //    //i++;
+            //}
+            //Console.WriteLine(sb);
+            //Console.WriteLine();
+            //Console.WriteLine(line + ":");
 
 
 
 
         }
-        static string ToJapanese(string key) {
+       public static string ToJapanese(string key) {
             return key switch {
                 "Novelist" => "作家",
                 "BestWork" => "代表作",
