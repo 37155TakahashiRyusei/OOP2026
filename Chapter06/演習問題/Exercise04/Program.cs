@@ -6,35 +6,13 @@ namespace Exercise04 {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-            var array = line.Split(';', '=');
-            //Console.WriteLine(array);
-            //var array2 = line.Split('='); 
-
-            var sb = new StringBuilder();
-            sb.Append(array);
-
-            for (int i = 0; i < line.Length; i++) {
-                //array[i].Split('=');
-                Console.WriteLine(array[i]);
-
+            foreach (var item in line.Split(';')) {
+                var array = item.Split('=');
+                Console.WriteLine($"{ToJapanese(array[0])}:{array[1]}");
             }
-
-            //int i = 0;
-            //foreach (var word in array) {
-            //    sb.Append(word + ":");
-            //    // Console.Write(array[i]);
-            //    Console.WriteLine(word);
-            //    //i++;
-            //}
-            //Console.WriteLine(sb);
-            //Console.WriteLine();
-            //Console.WriteLine(line + ":");
-
-
-
-
         }
-       public static string ToJapanese(string key) {
+
+        static string ToJapanese(string key) {
             return key switch {
                 "Novelist" => "作家",
                 "BestWork" => "代表作",
