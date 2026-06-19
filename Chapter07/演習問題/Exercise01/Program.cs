@@ -42,12 +42,10 @@ namespace Exercise01 {
                 Console.WriteLine(item);
             }
         }
-
-        public int num { get; }
+       
         private static void Exercise4(int[] numbers) {
             //P175参照
-            var sort = numbers.OrderBy(x => x)
-            .ThenBy(x => x)
+            var sort = numbers.Order()
             .Take(3);
             foreach (var item in sort) {
                 Console.WriteLine(item);
@@ -56,7 +54,12 @@ namespace Exercise01 {
 
         private static void Exercise5(int[] numbers) {
             //P174参照
-
+            var numDis = numbers.Distinct()
+            .Count(x => x > 10);
+            Console.WriteLine(numDis);
+            //foreach (var item in numDis) {
+            //    Console.WriteLine(item);
+            //}
         }
     }
 }
