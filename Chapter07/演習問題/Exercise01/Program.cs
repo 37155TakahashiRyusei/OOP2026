@@ -30,8 +30,8 @@ namespace Exercise01 {
 
         private static void Exercise2(int[] numbers) {
             var last = numbers.TakeLast(2);
-            foreach (var item in last) {
-                Console.WriteLine(item);
+            foreach (var num in last) {
+                Console.WriteLine(num);
             }
         }
 
