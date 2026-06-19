@@ -55,11 +55,8 @@ namespace Exercise01 {
         private static void Exercise5(int[] numbers) {
             //P174参照
             var numDis = numbers.Distinct()
-            .Count(x => x > 10);
-            Console.WriteLine(numDis);
-            //foreach (var item in numDis) {
-            //    Console.WriteLine(item);
-            //}
+             .Count(x => x > 10);
+             Console.WriteLine(numDis);
         }
     }
 }
