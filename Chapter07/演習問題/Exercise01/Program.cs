@@ -37,7 +37,10 @@ namespace Exercise01 {
 
         private static void Exercise3(int[] numbers) {
             //P173参照
-           // var num = new List<int>
+            var num = numbers.Select(x => x.ToString("000")).ToArray();
+            foreach (var item in num) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise4(int[] numbers) {
