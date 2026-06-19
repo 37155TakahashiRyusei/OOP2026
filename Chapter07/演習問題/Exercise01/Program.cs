@@ -43,17 +43,20 @@ namespace Exercise01 {
             }
         }
 
+        public int num { get; }
         private static void Exercise4(int[] numbers) {
             //P175参照
-            //var sort = numbers.OrderBy(x => x.)
-            //.ThenBy(x => x.);
-            //foreach (var item in sort) {
-            //    Console.WriteLine(item);
-            //}
+            var sort = numbers.OrderBy(x => x)
+            .ThenBy(x => x)
+            .Take(3);
+            foreach (var item in sort) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise5(int[] numbers) {
             //P174参照
+
         }
     }
 }
