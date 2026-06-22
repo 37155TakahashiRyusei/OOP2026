@@ -9,6 +9,6 @@
 
         //点数
         public int Score { get; set; }
-
+        
     }
 }
