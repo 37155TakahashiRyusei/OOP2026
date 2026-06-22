@@ -44,10 +44,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(List<Book> books) {
-            var book = books.Where(b => b.Title.Contains("C#"));
-            foreach (var bkTitle in book) {
-                Console.WriteLine(bkTitle);
-            }
+            var book = books.Where(b => b.Title.Contains("C#")).Count();
+            Console.WriteLine(book);
         }
 
         private static void Exercise3(List<Book> books) {
