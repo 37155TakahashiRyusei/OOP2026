@@ -37,16 +37,16 @@ namespace Exercise01 {
 
         private static void Exercise3(int[] numbers) {
             //P173参照
-            var num = numbers.Select(x => x.ToString("000")).ToArray();
-            foreach (var item in num) {
+            var strings = numbers.Select(x => x.ToString("000")).ToArray();
+            foreach (var item in strings) {
                 Console.WriteLine(item);
             }
         }
-       
+
         private static void Exercise4(int[] numbers) {
             //P175参照
             var sort = numbers.Order()
-            .Take(3);
+             .Take(3);
             foreach (var item in sort) {
                 Console.WriteLine(item);
             }
@@ -56,7 +56,7 @@ namespace Exercise01 {
             //P174参照
             var numDis = numbers.Distinct()
              .Count(x => x > 10);
-             Console.WriteLine(numDis);
+            Console.WriteLine(numDis);
         }
     }
 }
