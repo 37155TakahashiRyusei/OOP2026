@@ -28,12 +28,12 @@
             var dict = new Dictionary<string, int>();
             foreach (var scores in _score) {
                 //既に生徒名が辞書のキーに登録されているか？
-                if (dict.ContainsKey(scores.Name))
+                if (dict.ContainsKey(scores.Subject))
                     //登録されている場合
-                    dict[scores.Name] += scores.Score; //点数を足しこみ
+                    dict[scores.Subject] += scores.Score; //点数を足しこみ
                 else
                     //未登録の場合
-                    dict[scores.Name] = scores.Score; //新規に点数を登録
+                    dict[scores.Subject] = scores.Score; //新規に点数を登録
             }
             return dict;
         }
