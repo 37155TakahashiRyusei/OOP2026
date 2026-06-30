@@ -46,6 +46,7 @@ public class Abbreviations {
         bool result = _dict.Remove(abb);
 
 
+
         return true;    //エラー回避のために記述
     }
 
