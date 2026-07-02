@@ -14,7 +14,7 @@
 
 
             //abbrs.Count;
-            Console.WriteLine(abbrs.Count);
+            Console.WriteLine("追加後の件数" + abbrs.Count);
            // Console.WriteLine(abbrs.Remove);
 
 
