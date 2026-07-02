@@ -40,12 +40,10 @@
 
             // 8.2.4
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
-
-            //abbrs.GetAll().Where(x => x.Value);
-
-
-
-
+            var query = abbrs.GetAll().Where(x => x.Key.Length == 3);
+            foreach (var item in query) {
+                Console.WriteLine("{0}={1}",item.Key, item.Value);
+            }
         }
     }
 }
