@@ -33,7 +33,7 @@ public class Abbreviations {
     // 8.2.1
     //Countプロパティを追加
     //public int Count { get; set; }
-    public int Dictcount => _dict.Count;
+    public int Count => _dict.Count;
 
 
 
@@ -42,14 +42,18 @@ public class Abbreviations {
 
     // 8.2.2（最終的に式形式で記述すること）
     //p183
-    public bool Remove(string abb) {
-        bool result = _dict.Remove(abb);
+    //public bool Remove(string abb) {
+    //    bool result = _dict.Remove(abb);
+
+    //    return true;    //エラー回避のために記述
+    //}
 
 
+    //式形式の書き方
+    public bool Remove(string abb) => _dict.Remove(abb);
 
-        return true;    //エラー回避のために記述
-    }
 
+       
     // Dictionary<TKey, TValue>は、
     // IEnumerable<KeyValuePair<TKey, TValue>>を実装しているので
     // _dictを返せば良い
