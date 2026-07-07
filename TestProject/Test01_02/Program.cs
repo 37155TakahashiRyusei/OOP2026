@@ -68,13 +68,7 @@ namespace Test01_02 {
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
         private static void Exercise02(int[] numbers) =>
-            Console.WriteLine(numbers.Max());
-            
-        //var max = numbers.Max();
-        //if (max % 2 == 0) {
-        //    Console.WriteLine(max);
-        //}
-
+            Console.WriteLine(numbers.Where(c => c % 2 == 0).Max());
 
 
         //問題３　昇順に並べて表示（遅延実行とする）

@@ -25,6 +25,8 @@ namespace Section01 {
 
             TimeSpan ts = today.Date - birth.Date;
             tbOut2.Text = $"生まれてから{ts.Days}日目です";
+
+            //tbOut3.Text = $"生まれた";
         }
 
         //年齢を求めるメソッド
