@@ -72,7 +72,9 @@ namespace Test01_02 {
         //　　　　出力結果【94】
         private static void Exercise02(int[] numbers) {
             var max = numbers.Max();
-            Console.WriteLine(max);
+            if (max % 2 == 0) {
+                Console.WriteLine(max);
+            }
         }
 
 
@@ -153,12 +155,10 @@ namespace Test01_02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            //var cts = cities.Order();
-            //foreach (var item in cts) {
-            //    Console.WriteLine(item + " : " + item.Length + "文字");
-            //}
-
-
+            var cts = cities.OrderBy(c => c.Length);
+            foreach (var item in cts) {
+                Console.WriteLine(item + " : " + item.Length + "文字");
+            }
         }
 
         //問題１０　６文字の都市名を表示
@@ -166,8 +166,10 @@ namespace Test01_02 {
         //        【London
         //          Berlin】
         private static void Exercise10(List<string> cities) {
-
-
+            var cts = cities.Where(c => c.Length == 6);
+            foreach (var item in cts) {
+                Console.WriteLine(item);
+            }
         }
     }
 }

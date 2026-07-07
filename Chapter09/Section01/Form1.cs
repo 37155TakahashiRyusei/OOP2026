@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Section01 {
     public partial class Form1 : Form {
         public Form1() {
@@ -5,46 +7,28 @@ namespace Section01 {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
-            DateTime dt1 = dtpDate.Value;
-            
+            DateTime date = dtpDate.Value;
+            tbOut.Text = date.AddDays((double)nudDay.Value).ToString();
+        }
 
-            if(DateTime.IsLeapYear(dt1.Year)) {
-                tbOut.Text = "Ç§ÇÈÇ§îNÇ≈Ç∑";
-            } else {
-                tbOut.Text = "Ç§ÇÈÇ§îNÇ≈ÇÕÇ†ÇËÇ‹ÇπÇÒ";
+        private void btBirthCalc_Click(object sender, EventArgs e) {
+            DateTime birth = dtpDate.Value;     //ê∂Ç‹ÇÍÇΩì˙ït
+            DateTime today = DateTime.Today;    //ç°ì˙ÇÃì˙ït
+
+            //var bornDate = birth.AddYears(dtpBirth).AddMonths();
+            // var nowDate = today.add
+
+            //.AddMonths().ToString();
+            //tbOut.Text = "Ç†Ç»ÇΩÇÕ" +  + "çŒÇ≈Ç∑";
+
+            int age = today.Year - birth.Year;
+            if(today < birth.AddYears(age)) {
+                age--;
             }
 
-            switch (dt1.DayOfWeek) {
-                case DayOfWeek.Sunday:
-                    tbOut.Text = "ç°ì˙ÇÕì˙ójì˙Ç≈Ç∑";
-                    break;
+            //tbOut2.Text = (today - birth).Days();
 
-                case DayOfWeek.Monday:
-                    tbOut.Text = "ç°ì˙ÇÕåéójì˙Ç≈Ç∑";
-                    break;
 
-                case DayOfWeek.Tuesday:
-                    tbOut.Text = "ç°ì˙ÇÕâŒójì˙Ç≈Ç∑";
-                    break;
-
-                case DayOfWeek.Wednesday:
-                    tbOut.Text = "ç°ì˙ÇÕêÖójì˙Ç≈Ç∑";
-                    break;
-                case DayOfWeek.Thursday:
-                    tbOut.Text = "ç°ì˙ÇÕñÿójì˙Ç≈Ç∑";
-                    break;
-
-                case DayOfWeek.Friday:
-                    tbOut.Text = "ç°ì˙ÇÕã‡ójì˙Ç≈Ç∑";
-                    break;
-
-                case DayOfWeek.Saturday:
-                    tbOut.Text = "ç°ì˙ÇÕìyójì˙Ç≈Ç∑";
-                    break;
-
-                default:
-                    break;
-            }
         }
     }
 }
