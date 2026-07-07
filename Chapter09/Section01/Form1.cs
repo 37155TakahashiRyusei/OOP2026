@@ -13,7 +13,7 @@ namespace Section01 {
 
         private void btBirthCalc_Click(object sender, EventArgs e) {
             DateTime birth = dtpDate.Value;     //生まれた日付
-            DateTime today = DateTime.Today;    //今日の日付
+            DateTime today = DateTime.Now;    //今日の日付
 
             //Form1.GetAge(birth, today);
 
@@ -25,8 +25,11 @@ namespace Section01 {
 
             TimeSpan ts = today - birth;
             tbOut2.Text = $"生まれてから{ts.Days}日目です";
+            var culture = new CultureInfo("ja-JP");
+            var dayOfWeek = culture.DateTimeFormat.GetDayName(birth.DayOfWeek);
 
-            tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は第{NthWeek(birth)}週です";
+            tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は" +
+                $"第{NthWeek(birth)}週の{dayOfWeek}曜日です";
         }
 
         //年齢を求めるメソッド
