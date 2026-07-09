@@ -12,8 +12,8 @@ namespace Section01 {
         }
 
         private void btBirthCalc_Click(object sender, EventArgs e) {
-            DateTime birth = dtpDate.Value;     //生まれた日付
-            DateTime today = DateTime.Now;    //今日の日付
+            DateTime birth = dtpDate.Value.Date;     //生まれた日付
+            DateTime today = DateTime.Today;    //今日の日付
 
             //int age = today.Year - birth.Year;
             //if(today < birth.AddYears(age)) {
@@ -36,8 +36,10 @@ namespace Section01 {
            
             if (today.Day - birth.Day == 0) {
                 tbOut4.Text = $"今日はあなたの誕生日です";
-            }else {
+            }else if (today.Day - birth.Day >= 0) {
                 tbOut4.Text = $"誕生日までの残り{today.Day - birth.Day}日です";
+            } else {
+                tbOut4.Text = $"誕生日までの残り{(today.Day - birth.Day) - (today.Day - birth.Day) * 2}日です";
             }
         }
 
