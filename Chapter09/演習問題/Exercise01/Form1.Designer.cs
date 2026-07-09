@@ -1,0 +1,115 @@
+﻿namespace Exercise01 {
+    partial class Form1 {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
+            btButton1 = new Button();
+            tbOut1 = new TextBox();
+            btButton2 = new Button();
+            tbOut2 = new TextBox();
+            btButton3 = new Button();
+            tbOut3 = new TextBox();
+            SuspendLayout();
+            // 
+            // btButton1
+            // 
+            btButton1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btButton1.Location = new Point(21, 12);
+            btButton1.Name = "btButton1";
+            btButton1.Size = new Size(75, 63);
+            btButton1.TabIndex = 0;
+            btButton1.Text = "①";
+            btButton1.UseVisualStyleBackColor = true;
+            btButton1.Click += btButton1_Click;
+            // 
+            // tbOut1
+            // 
+            tbOut1.Location = new Point(135, 33);
+            tbOut1.Name = "tbOut1";
+            tbOut1.Size = new Size(270, 23);
+            tbOut1.TabIndex = 1;
+            tbOut1.TextAlign = HorizontalAlignment.Right;
+            // 
+            // btButton2
+            // 
+            btButton2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btButton2.Location = new Point(21, 128);
+            btButton2.Name = "btButton2";
+            btButton2.Size = new Size(75, 63);
+            btButton2.TabIndex = 0;
+            btButton2.Text = "②";
+            btButton2.UseVisualStyleBackColor = true;
+            // 
+            // tbOut2
+            // 
+            tbOut2.Location = new Point(135, 154);
+            tbOut2.Name = "tbOut2";
+            tbOut2.Size = new Size(270, 23);
+            tbOut2.TabIndex = 1;
+            tbOut2.TextAlign = HorizontalAlignment.Right;
+            // 
+            // btButton3
+            // 
+            btButton3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btButton3.Location = new Point(21, 240);
+            btButton3.Name = "btButton3";
+            btButton3.Size = new Size(75, 63);
+            btButton3.TabIndex = 0;
+            btButton3.Text = "③";
+            btButton3.UseVisualStyleBackColor = true;
+            // 
+            // tbOut3
+            // 
+            tbOut3.Location = new Point(135, 266);
+            tbOut3.Name = "tbOut3";
+            tbOut3.Size = new Size(270, 23);
+            tbOut3.TabIndex = 1;
+            tbOut3.TextAlign = HorizontalAlignment.Right;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(tbOut3);
+            Controls.Add(tbOut2);
+            Controls.Add(btButton3);
+            Controls.Add(tbOut1);
+            Controls.Add(btButton2);
+            Controls.Add(btButton1);
+            Name = "Form1";
+            Text = "問題9.1";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Button btButton1;
+        private TextBox tbOut1;
+        private Button btButton2;
+        private TextBox tbOut2;
+        private Button btButton3;
+        private TextBox tbOut3;
+    }
+}

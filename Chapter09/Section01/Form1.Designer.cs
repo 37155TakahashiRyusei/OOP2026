@@ -36,13 +36,15 @@
             label4 = new Label();
             tbOut3 = new TextBox();
             label5 = new Label();
+            tbOut4 = new TextBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)nudDay).BeginInit();
             SuspendLayout();
             // 
             // dtpDate
             // 
             dtpDate.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpDate.Location = new Point(35, 38);
+            dtpDate.Location = new Point(44, 248);
             dtpDate.Name = "dtpDate";
             dtpDate.Size = new Size(200, 39);
             dtpDate.TabIndex = 0;
@@ -86,7 +88,7 @@
             // dtpBirth
             // 
             dtpBirth.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpBirth.Location = new Point(35, 238);
+            dtpBirth.Location = new Point(35, 38);
             dtpBirth.Name = "dtpBirth";
             dtpBirth.Size = new Size(200, 39);
             dtpBirth.TabIndex = 0;
@@ -113,7 +115,7 @@
             // tbOut2
             // 
             tbOut2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbOut2.Location = new Point(35, 402);
+            tbOut2.Location = new Point(35, 368);
             tbOut2.Name = "tbOut2";
             tbOut2.Size = new Size(432, 39);
             tbOut2.TabIndex = 2;
@@ -130,7 +132,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(35, 366);
+            label4.Location = new Point(35, 350);
             label4.Name = "label4";
             label4.Size = new Size(55, 15);
             label4.TabIndex = 6;
@@ -139,27 +141,46 @@
             // tbOut3
             // 
             tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbOut3.Location = new Point(35, 494);
+            tbOut3.Location = new Point(35, 428);
             tbOut3.Multiline = true;
             tbOut3.Name = "tbOut3";
-            tbOut3.Size = new Size(432, 85);
+            tbOut3.Size = new Size(432, 83);
             tbOut3.TabIndex = 2;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(35, 463);
+            label5.Location = new Point(35, 410);
             label5.Name = "label5";
             label5.Size = new Size(24, 15);
             label5.TabIndex = 6;
             label5.Text = "メモ";
+            // 
+            // tbOut4
+            // 
+            tbOut4.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut4.Location = new Point(35, 545);
+            tbOut4.Name = "tbOut4";
+            tbOut4.Size = new Size(432, 35);
+            tbOut4.TabIndex = 7;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(35, 514);
+            label6.Name = "label6";
+            label6.Size = new Size(116, 15);
+            label6.TabIndex = 6;
+            label6.Text = "誕生日までの残り日数";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(508, 627);
+            Controls.Add(tbOut4);
             Controls.Add(label3);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label2);
@@ -194,5 +215,7 @@
         private Label label4;
         private TextBox tbOut3;
         private Label label5;
+        private TextBox tbOut4;
+        private Label label6;
     }
 }

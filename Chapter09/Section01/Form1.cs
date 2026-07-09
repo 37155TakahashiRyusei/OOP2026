@@ -15,21 +15,32 @@ namespace Section01 {
             DateTime birth = dtpDate.Value;     //生まれた日付
             DateTime today = DateTime.Now;    //今日の日付
 
-            //Form1.GetAge(birth, today);
-
             //int age = today.Year - birth.Year;
             //if(today < birth.AddYears(age)) {
             //    age--;
             //}
+
             tbOut.Text = $"あなたは{GetAge(birth, today)}歳です";
 
             TimeSpan ts = today - birth;
             tbOut2.Text = $"生まれてから{ts.Days}日目です";
+
             var culture = new CultureInfo("ja-JP");
             var dayOfWeek = culture.DateTimeFormat.GetDayName(birth.DayOfWeek);
 
             tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は" +
-                $"第{NthWeek(birth)}週の{dayOfWeek}曜日です";
+                $"第{NthWeek(birth)}週の{dayOfWeek}です";
+
+            //次の誕生日までの日数を求めて表示する　誕生日は今年？来年？
+            //今日が誕生日なら「誕生日は今日です」と表示する
+
+
+           
+            if (today.Day - birth.Day == 0) {
+                tbOut4.Text = $"今日はあなたの誕生日です";
+            }else {
+                tbOut4.Text = $"誕生日までの残り{today.Day - birth.Day}日です";
+            }
         }
 
         //年齢を求めるメソッド
