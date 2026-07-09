@@ -44,9 +44,10 @@
             // 
             // tbOut1
             // 
+            tbOut1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut1.Location = new Point(135, 33);
             tbOut1.Name = "tbOut1";
-            tbOut1.Size = new Size(270, 23);
+            tbOut1.Size = new Size(443, 39);
             tbOut1.TabIndex = 1;
             tbOut1.TextAlign = HorizontalAlignment.Right;
             // 
@@ -59,12 +60,14 @@
             btButton2.TabIndex = 0;
             btButton2.Text = "②";
             btButton2.UseVisualStyleBackColor = true;
+            btButton2.Click += btButton2_Click;
             // 
             // tbOut2
             // 
+            tbOut2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut2.Location = new Point(135, 154);
             tbOut2.Name = "tbOut2";
-            tbOut2.Size = new Size(270, 23);
+            tbOut2.Size = new Size(443, 39);
             tbOut2.TabIndex = 1;
             tbOut2.TextAlign = HorizontalAlignment.Right;
             // 
@@ -77,12 +80,14 @@
             btButton3.TabIndex = 0;
             btButton3.Text = "③";
             btButton3.UseVisualStyleBackColor = true;
+            btButton3.Click += btButton3_Click;
             // 
             // tbOut3
             // 
+            tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut3.Location = new Point(135, 266);
             tbOut3.Name = "tbOut3";
-            tbOut3.Size = new Size(270, 23);
+            tbOut3.Size = new Size(443, 39);
             tbOut3.TabIndex = 1;
             tbOut3.TextAlign = HorizontalAlignment.Right;
             // 
