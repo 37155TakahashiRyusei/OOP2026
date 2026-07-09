@@ -33,14 +33,31 @@ namespace Section01 {
 
             //次の誕生日までの日数を求めて表示する　誕生日は今年？来年？
             //今日が誕生日なら「誕生日は今日です」と表示する
-           
-            if (today.Day - birth.Day == 0) {
-                tbOut4.Text = $"今日はあなたの誕生日です";
-            }else if (today.Day - birth.Day >= 0) {
-                tbOut4.Text = $"誕生日までの残り{today.Day - birth.Day}日です";
-            } else {
-                tbOut4.Text = $"誕生日までの残り{(today.Day - birth.Day) - (today.Day - birth.Day) * 2}日です";
+
+            //今年の誕生日を作成する
+            DateTime thisYearBirthday = new DateTime(today.Year, birth.Month, birth.Day);
+            //既に誕生日が過ぎたか    
+            if (thisYearBirthday < today) {
+                //来年の誕生日を作成する
+                thisYearBirthday = thisYearBirthday.AddYears(1);
             }
+
+            var span = thisYearBirthday - today;
+
+            if(span.Days == 0) {
+                tbOut4.Text = "誕生日は今日です";
+            }else {
+                tbOut4.Text = $"誕生日まであと{span.Days}です";
+            }
+           
+           
+            //if (today.Day - birth.Day == 0) {
+            //    tbOut4.Text = $"今日はあなたの誕生日です";
+            //}else if (today.Day - birth.Day >= 0) {
+            //    tbOut4.Text = $"誕生日までの残り{today.Day - birth.Day}日です";
+            //} else {
+            //    tbOut4.Text = $"誕生日までの残り{(today.Day - birth.Day) - (today.Day - birth.Day) * 2}日です";
+            //}
         }
 
         //年齢を求めるメソッド
