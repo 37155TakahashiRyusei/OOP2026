@@ -28,7 +28,7 @@ namespace Exercise01 {
             var dayOfweek = culture.DateTimeFormat.GetDayName(today.DayOfWeek);//—j“ú
             var year = int.Parse(today.ToString("yy", culture));
             var str2 = string.Format($"{cul}{year,2}”N{today.Month,2}ŒŽ{today.Day,2}“ú({dayOfweek})");
-            Console.WriteLine(str2);
+            tbOut3.Text = str2;
             //var dayOfWeek = culture.DateTimeFormat.GetDayName(today.DayOfWeek);
 
             //tbOut3.Text = today.ToString( "gy”N" + " " + "MŒŽ" + " " + "d“ú" + "(" + dayOfWeek + ")", culture);

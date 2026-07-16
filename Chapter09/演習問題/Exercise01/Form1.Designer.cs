@@ -47,7 +47,7 @@
             tbOut1.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut1.Location = new Point(135, 33);
             tbOut1.Name = "tbOut1";
-            tbOut1.Size = new Size(443, 39);
+            tbOut1.Size = new Size(519, 39);
             tbOut1.TabIndex = 1;
             tbOut1.TextAlign = HorizontalAlignment.Right;
             // 
@@ -67,7 +67,7 @@
             tbOut2.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut2.Location = new Point(135, 154);
             tbOut2.Name = "tbOut2";
-            tbOut2.Size = new Size(443, 39);
+            tbOut2.Size = new Size(519, 39);
             tbOut2.TabIndex = 1;
             tbOut2.TextAlign = HorizontalAlignment.Right;
             // 
@@ -87,7 +87,7 @@
             tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut3.Location = new Point(135, 266);
             tbOut3.Name = "tbOut3";
-            tbOut3.Size = new Size(443, 39);
+            tbOut3.Size = new Size(519, 39);
             tbOut3.TabIndex = 1;
             tbOut3.TextAlign = HorizontalAlignment.Right;
             // 
