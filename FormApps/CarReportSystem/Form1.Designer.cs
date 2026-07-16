@@ -228,6 +228,8 @@
             // 
             // dgvRecords
             // 
+            dgvRecords.AllowUserToAddRows = false;
+            dgvRecords.AllowUserToDeleteRows = false;
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecords.Location = new Point(12, 379);
             dgvRecords.MultiSelect = false;
@@ -452,7 +454,9 @@
             Controls.Add(label6);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "Form1";
             Text = "試乗レポート管理システム";
             groupBox1.ResumeLayout(false);

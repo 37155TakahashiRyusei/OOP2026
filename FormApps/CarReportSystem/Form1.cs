@@ -40,8 +40,15 @@ namespace CarReportSystem {
 
             listCarReports.Add(carReport);
 
+
+            SetCbAuthor(cbAuthor.Text);
+            SetCbCarName(cbCarName.Text);
+
+
             ImputitemusallClear(); //“ü—Í‚ÌƒNƒŠƒA[
         }
+
+
 
         private MakerGroup GetRadioButtonMaker() {
             if (rbToyota.Checked)
@@ -71,6 +78,7 @@ namespace CarReportSystem {
 
         private void btNewInput_Click(object sender, EventArgs e) {
             ImputitemusallClear();
+
         }
 
         private void ImputitemusallClear() {
@@ -83,12 +91,57 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_Click(object sender, EventArgs e) {
-            dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Data"].Value;
-            cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
+            if (dgvRecords.CurrentRow is null) {
+                return;
+            }
 
+            dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
+            cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
+            SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Maker"].Value);
             cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
-            pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Data"].Value;
+            pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
         }
+
+        private void SetRadioButtonMaker(MakerGroup targetMaker) {
+            switch (targetMaker) {
+                case MakerGroup.ƒgƒˆƒ^:
+                    rbToyota.Checked = true;
+                    break;
+                case MakerGroup.“úY:
+                    rbNissan.Checked = true;
+                    break;
+                case MakerGroup.ƒzƒ“ƒ_:
+                    rbHonda.Checked = true;
+                    break;
+                case MakerGroup.ƒXƒoƒ‹:
+                    rbSubaru.Checked = true;
+                    break;
+                case MakerGroup.—A“üÔ:
+                    rbImport.Checked = true;
+                    break;
+                default:
+                    rbOther.Checked = true;
+                    break;
+            }
+        }
+
+        //‹L˜^Ò‚Ì“ü—Í—š—ğ‚ğ“o˜^‚·‚éid•¡‚È‚µj
+        private void SetCbAuthor(string author) {
+            //–¢“o˜^‚È‚ç“o˜^y“o˜^Ï‚İ‚È‚ç‰½‚à‚µ‚È‚¢z
+            if (!cbAuthor.Items.Contains(author)) {
+                cbAuthor.Items.Add(author);
+            }
+        }
+
+        //Ô–¼‚Ì“ü—Í—š—ğ‚ğƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ö“o˜^id•¡‚È‚µj
+        private void SetCbCarName(string carName) {
+            if (!cbCarName.Items.Contains(carName)) {
+                cbCarName.Items.Add(carName);
+            }
+
+        }
+
+        
     }
 }
