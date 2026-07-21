@@ -271,6 +271,7 @@
             btDeletePicture.TabIndex = 7;
             btDeletePicture.Text = "削除";
             btDeletePicture.UseVisualStyleBackColor = false;
+            btDeletePicture.Click += btDeletePicture_Click;
             // 
             // label6
             // 
@@ -314,6 +315,7 @@
             btModifyRecord.TabIndex = 7;
             btModifyRecord.Text = "修正";
             btModifyRecord.UseVisualStyleBackColor = false;
+            btModifyRecord.Click += btModifyRecord_Click;
             // 
             // btDeliteRecord
             // 
@@ -324,6 +326,7 @@
             btDeliteRecord.TabIndex = 7;
             btDeliteRecord.Text = "削除";
             btDeliteRecord.UseVisualStyleBackColor = false;
+            btDeliteRecord.Click += btDeliteRecord_Click;
             // 
             // label7
             // 
@@ -415,6 +418,7 @@
             statusStrip1.Location = new Point(0, 607);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(727, 22);
+            statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 10;
             statusStrip1.Text = "statusStrip1";
             // 
