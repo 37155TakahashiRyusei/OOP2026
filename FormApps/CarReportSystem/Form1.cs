@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using System.Xml;
+using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,6 +13,9 @@ namespace CarReportSystem {
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
         //BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+
+        //設定クラスのオブジェクトを生成
+        
 
         public Form1() {
             InitializeComponent();
@@ -49,8 +54,8 @@ namespace CarReportSystem {
             SetCbCarName(cbCarName.Text.Trim());
 
             dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
-            //dgvRecords.ClearSelection();  //セルの選択を解除する
-               
+                                                    //dgvRecords.ClearSelection();  //セルの選択を解除する
+
 
             InputitemusallClear(); //入力のクリアー
         }
@@ -212,7 +217,7 @@ namespace CarReportSystem {
             if (cdcolor.ShowDialog() == DialogResult.OK) {
                 this.BackColor = cdcolor.Color;
             }
-            
+
             //using (ColorDialog colorDialog = new ColorDialog()) {
 
             //    //初期色の設定
@@ -233,7 +238,18 @@ namespace CarReportSystem {
             //    CustomColors = colorDialog.CustomColors;
             //}
 
-            
+
+        }
+        //フォームが閉じたら呼ばれるイベントハンドラ
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルへ色情報を保存する処理（シリアル化）
+            ////p284以降を参考にする(ファイル名:setting.xml)
+            //using (var writer = XmlWriter.Create("setting.xml")) {
+            //    var seriallizer = new XmlSerializer(SettingsBindableAttribute.GetType());
+            //    seriallizer.Serialize()
+            //}
+               
+
         }
     }
 }
