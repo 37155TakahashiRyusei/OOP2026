@@ -5,6 +5,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
+        int[] CustomColors;
+
+
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
         //BindingList<CarReport> listCarReports = new BindingList<CarReport>();
@@ -12,6 +15,8 @@ namespace CarReportSystem {
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
+
+            CustomColors = new int[] { 0x00FF0000, 0x0000FF00, 0x000000FF };
         }
         //追加ボタンイベントハンドラ
         private void btAddRecord_Click(object sender, EventArgs e) {
@@ -185,7 +190,7 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
-           
+
             if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 return;
             }
@@ -198,6 +203,35 @@ namespace CarReportSystem {
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
             ImputItemUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            // cdcolor.Color()
+            using (ColorDialog colorDialog = new ColorDialog()) {
+
+                //初期色の設定
+                colorDialog.Color = this.BackColor;
+
+                //カスタム色の設定
+                colorDialog.CustomColors = CustomColors;
+
+                //ColorDialogを表示
+                if (colorDialog.ShowDialog() == DialogResult.OK) {
+
+                    //選択された色でフォームの背景を変更
+                    this.BackColor = colorDialog.Color;
+
+                }
+
+                // ダイアログでユーザーが作成したカスタム色を取得（保存や次回の使用のため）
+                CustomColors = colorDialog.CustomColors;
+            }
+
+            
         }
     }
 }
