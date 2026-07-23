@@ -35,23 +35,24 @@ namespace CarReportSystem {
             }
 
             var carReport = new CarReport {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
+                Date = dtpDate.Value.Date,
+                Author = cbAuthor.Text.Trim(),
                 Maker = GetRadioButtonMaker(),
-                CarName = cbCarName.Text,
+                CarName = cbCarName.Text.Trim(),
                 Report = tbReport.Text,
                 Picture = pbPicture.Image,
             };
 
             listCarReports.Add(carReport);
 
-            SetCbAuthor(cbAuthor.Text);
-            SetCbCarName(cbCarName.Text);
+            SetCbAuthor(cbAuthor.Text.Trim());
+            SetCbCarName(cbCarName.Text.Trim());
 
             dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
             //dgvRecords.ClearSelection();  //セルの選択を解除する
+               
 
-            ImputitemusallClear(); //入力のクリアー
+            InputitemusallClear(); //入力のクリアー
         }
 
 
@@ -85,34 +86,16 @@ namespace CarReportSystem {
 
         private void btNewInput_Click(object sender, EventArgs e) {
             dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
-            ImputitemusallClear();
+            InputitemusallClear();
         }
 
-        private void ImputitemusallClear() {
+        private void InputitemusallClear() {
             dtpDate.Value = DateTime.Today;
             cbAuthor.Text = string.Empty;
             rbOther.Checked = true;
             cbCarName.Text = string.Empty;
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
-        }
-
-        private void dgvRecords_Click(object sender, EventArgs e) {
-            //if (dgvRecords.CurrentRow is null) {
-            //    return;
-            //}
-            //if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
-            //    return;
-            //}
-
-            //dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
-            //cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
-            //SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Maker"].Value);
-            //cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
-            //tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
-            //pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
-
-            //ImputItemUpdate();
         }
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
@@ -171,38 +154,54 @@ namespace CarReportSystem {
             listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
         }
 
-        private void ImputItemUpdate() {
+        private void InputItemUpdate() {
             if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 return;
             }
         }
 
         private void btModifyRecord_Click(object sender, EventArgs e) {
+
+            if (dgvRecords.SelectedRows.Count == 0) {
+                tsslbMessage.Text = "修正するレコードを選択してください";
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
+                tsslbMessage.Text = "記録者、または車名が未入力です";
+                return;
+            }
+
             //カーレポート管理用リストの該当する要素のデータを書き換える
-            listCarReports[dgvRecords.CurrentRow.Index].Date = dtpDate.Value;
-            listCarReports[dgvRecords.CurrentRow.Index].Author = cbAuthor.Text;
+            listCarReports[dgvRecords.CurrentRow.Index].Date = dtpDate.Value.Date;
+            listCarReports[dgvRecords.CurrentRow.Index].Author = cbAuthor.Text.Trim();
             listCarReports[dgvRecords.CurrentRow.Index].Maker = GetRadioButtonMaker();
-            listCarReports[dgvRecords.CurrentRow.Index].CarName = cbCarName.Text;
+            listCarReports[dgvRecords.CurrentRow.Index].CarName = cbCarName.Text.Trim();
             listCarReports[dgvRecords.CurrentRow.Index].Report = tbReport.Text;
             listCarReports[dgvRecords.CurrentRow.Index].Picture = pbPicture.Image;
 
+            SetCbAuthor(cbAuthor.Text.Trim());
+            SetCbCarName(cbCarName.Text.Trim());
+
             dgvRecords.Refresh(); //データグリッドビューの更新
+            tsslbMessage.Text = "レポートを修正しました";
+            //tsslbMessage.Text = "";
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
 
-            if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
+            if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport || !dgvRecords.CurrentRow.Selected) {
                 return;
             }
 
-            dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
-            cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
-            SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Maker"].Value);
-            cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
-            tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
-            pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
+            dtpDate.Value = carReport.Date;
+            cbAuthor.Text = carReport.Author;
+            SetRadioButtonMaker(carReport.Maker);
+            cbCarName.Text = carReport.CarName;
+            tbReport.Text = carReport.Report;
+            pbPicture.Image = carReport.Picture;
 
-            ImputItemUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+            InputItemUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -210,26 +209,29 @@ namespace CarReportSystem {
         }
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-            // cdcolor.Color()
-            using (ColorDialog colorDialog = new ColorDialog()) {
-
-                //初期色の設定
-                colorDialog.Color = this.BackColor;
-
-                //カスタム色の設定
-                colorDialog.CustomColors = CustomColors;
-
-                //ColorDialogを表示
-                if (colorDialog.ShowDialog() == DialogResult.OK) {
-
-                    //選択された色でフォームの背景を変更
-                    this.BackColor = colorDialog.Color;
-
-                }
-
-                // ダイアログでユーザーが作成したカスタム色を取得（保存や次回の使用のため）
-                CustomColors = colorDialog.CustomColors;
+            if (cdcolor.ShowDialog() == DialogResult.OK) {
+                this.BackColor = cdcolor.Color;
             }
+            
+            //using (ColorDialog colorDialog = new ColorDialog()) {
+
+            //    //初期色の設定
+            //    colorDialog.Color = this.BackColor;
+
+            //    //カスタム色の設定
+            //    colorDialog.CustomColors = CustomColors;
+
+            //    //ColorDialogを表示
+            //    if (colorDialog.ShowDialog() == DialogResult.OK) {
+
+            //        //選択された色でフォームの背景を変更
+            //        this.BackColor = colorDialog.Color;
+
+            //    }
+
+            //    // ダイアログでユーザーが作成したカスタム色を取得（保存や次回の使用のため）
+            //    CustomColors = colorDialog.CustomColors;
+            //}
 
             
         }
