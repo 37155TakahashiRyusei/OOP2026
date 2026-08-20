@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
-        int[] CustomColors;
+        //int[] CustomColors;
 
 
         //カーレポート管理用リスト
@@ -15,14 +15,51 @@ namespace CarReportSystem {
         //BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         //設定クラスのオブジェクトを生成
-        
+        //Settings settings = new Settings();
+        Settings settings = new Settings();
 
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
-
-            CustomColors = new int[] { 0x00FF0000, 0x0000FF00, 0x000000FF };
+            //CustomColors = new int[] { 0x00FF0000, 0x0000FF00, 0x000000FF };
         }
+
+        private void Form1_Load (object sender, EventArgs e) {
+            //設定ファイルを読み込み背景色を設定する(逆シリアル化)
+            //P286以降を参考にする(ファイル名：setting.xml)
+
+            //var filePass = "setting.xml";
+
+            //ファイルが存在しているか？
+            //P216以降にヒント有り
+            if (File.Exists("setting.xml")) {
+                try {
+                    //using (var reader = XmlReader.Create(new StringReader("setting.xml"))) {
+                    //    var serializer = new XmlSerializer(typeof(string));
+                    //    var set = serializer.Deserialize(reader) as string;
+                    //}
+
+                    //using (var writer = XmlWriter.Create("setting.xml")) {
+                    //    var seriallizer = new XmlSerializer(settings.GetType());
+                    //    seriallizer.Serialize(writer, settings);
+                    //}
+
+                    using (var reader = XmlReader.Create("setting.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        var settings = serializer.Deserialize(reader) as Settings;
+                        //背景色設定
+                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+                    }
+
+                } catch (Exception ex) {
+                    tsslbMessage.Text = "設定ファイル読み込みエラー";
+                    MessageBox.Show(ex.Message);//←より具体的のエラーを出力
+                }
+            }else {
+                tsslbMessage.Text = "設定ファイルがありません";
+            }
+        }
+
         //追加ボタンイベントハンドラ
         private void btAddRecord_Click(object sender, EventArgs e) {
             tsslbMessage.Text = string.Empty; //メッセージ領域のクリア
@@ -216,6 +253,9 @@ namespace CarReportSystem {
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdcolor.ShowDialog() == DialogResult.OK) {
                 this.BackColor = cdcolor.Color;
+
+                //変色さえれた色の情報を保存
+                settings.MainFormBackColor = cdcolor.Color.ToArgb();
             }
 
             //using (ColorDialog colorDialog = new ColorDialog()) {
@@ -237,19 +277,15 @@ namespace CarReportSystem {
             //    // ダイアログでユーザーが作成したカスタム色を取得（保存や次回の使用のため）
             //    CustomColors = colorDialog.CustomColors;
             //}
-
-
         }
         //フォームが閉じたら呼ばれるイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルへ色情報を保存する処理（シリアル化）
             ////p284以降を参考にする(ファイル名:setting.xml)
-            //using (var writer = XmlWriter.Create("setting.xml")) {
-            //    var seriallizer = new XmlSerializer(SettingsBindableAttribute.GetType());
-            //    seriallizer.Serialize()
-            //}
-               
-
+            using (var writer = XmlWriter.Create("setting.xml")) {
+                var seriallizer = new XmlSerializer(settings.GetType());
+                seriallizer.Serialize(writer, settings);
+            }
         }
     }
 }
