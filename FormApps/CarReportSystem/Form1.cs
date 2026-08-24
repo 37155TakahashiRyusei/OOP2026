@@ -310,15 +310,7 @@ namespace CarReportSystem {
                         //自力のやつ↑
 
                     }
-                    //コンボボックスの履歴を全て消す
-                    cbAuthor.Items.Clear();
-                    cbCarName.Items.Clear();
-
-                    //コンボボックスの履歴を再登録
-                    foreach (var report in listCarReports) {
-                        SetCbAuthor(report.Author);
-                        SetCbCarName(report.CarName);
-                    }
+                  
 
                 } catch (Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み出しエラー";
