@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
@@ -24,7 +25,7 @@ namespace CarReportSystem {
             //CustomColors = new int[] { 0x00FF0000, 0x0000FF00, 0x000000FF };
         }
 
-        private void Form1_Load (object sender, EventArgs e) {
+        private void Form1_Load(object sender, EventArgs e) {
             //設定ファイルを読み込み背景色を設定する(逆シリアル化)
             //P286以降を参考にする(ファイル名：setting.xml)
 
@@ -34,28 +35,19 @@ namespace CarReportSystem {
             //P216以降にヒント有り
             if (File.Exists("setting.xml")) {
                 try {
-                    //using (var reader = XmlReader.Create(new StringReader("setting.xml"))) {
-                    //    var serializer = new XmlSerializer(typeof(string));
-                    //    var set = serializer.Deserialize(reader) as string;
-                    //}
-
-                    //using (var writer = XmlWriter.Create("setting.xml")) {
-                    //    var seriallizer = new XmlSerializer(settings.GetType());
-                    //    seriallizer.Serialize(writer, settings);
-                    //}
-
                     using (var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        var settings = serializer.Deserialize(reader) as Settings;
+                        //var settings = serializer.Deserialize(reader) as Settings;
+                        settings = serializer.Deserialize(reader) as Settings;
+
                         //背景色設定
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
-
                 } catch (Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み込みエラー";
                     MessageBox.Show(ex.Message);//←より具体的のエラーを出力
                 }
-            }else {
+            } else {
                 tsslbMessage.Text = "設定ファイルがありません";
             }
         }
@@ -67,10 +59,6 @@ namespace CarReportSystem {
             //ここに記録者と車名が未入力だった場合の処理を記述する
             //記録者と車名が未入力だった場合は追加しない
 
-            //if (cbAuthor.Text == string.Empty || cbCarName.Text == string.Empty) {
-            //    tsslbMessage.Text = "記録者、または車名が未入力です";
-            //    return;
-            //} 
             if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
                 tsslbMessage.Text = "記録者、または車名が未入力です";
                 return;
@@ -92,7 +80,6 @@ namespace CarReportSystem {
 
             dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
                                                     //dgvRecords.ClearSelection();  //セルの選択を解除する
-
 
             InputitemusallClear(); //入力のクリアー
         }
@@ -252,31 +239,13 @@ namespace CarReportSystem {
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
             if (cdcolor.ShowDialog() == DialogResult.OK) {
-                this.BackColor = cdcolor.Color;
+                BackColor = cdcolor.Color;
 
                 //変色さえれた色の情報を保存
                 settings.MainFormBackColor = cdcolor.Color.ToArgb();
             }
 
-            //using (ColorDialog colorDialog = new ColorDialog()) {
-
-            //    //初期色の設定
-            //    colorDialog.Color = this.BackColor;
-
-            //    //カスタム色の設定
-            //    colorDialog.CustomColors = CustomColors;
-
-            //    //ColorDialogを表示
-            //    if (colorDialog.ShowDialog() == DialogResult.OK) {
-
-            //        //選択された色でフォームの背景を変更
-            //        this.BackColor = colorDialog.Color;
-
-            //    }
-
-            //    // ダイアログでユーザーが作成したカスタム色を取得（保存や次回の使用のため）
-            //    CustomColors = colorDialog.CustomColors;
-            //}
+          
         }
         //フォームが閉じたら呼ばれるイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
@@ -285,6 +254,76 @@ namespace CarReportSystem {
             using (var writer = XmlWriter.Create("setting.xml")) {
                 var seriallizer = new XmlSerializer(settings.GetType());
                 seriallizer.Serialize(writer, settings);
+            }
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportSaveFile();
+        }
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportOpenFile();
+        }
+
+        //ファイルセーブ処理
+        private void reportSaveFile() {
+            if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
+                try {
+                    //バイナリ形式でシリアル化
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(
+                        sfdReportFileSave.FileName,
+                        FileMode.Create
+                        )) {
+                        bf.Serialize(fs, listCarReports);
+                    }
+
+                } catch (Exception ex) {
+                    tsslbMessage.Text = "ファイル書き出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        //ファイルオープン処理
+        private void reportOpenFile() {
+            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+                try {
+                    //逆シリアル化でバイナリ形式を取り込む
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(
+                        ofdReportFileOpen.FileName, //ファイル名
+                        FileMode.Open,  //ファイルモード
+                        FileAccess.Read //アクセス
+                        )) {
+
+                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRecords.DataSource = listCarReports;
+
+
+                        //SetCbAuthor(listCarReports.ToString().Trim());
+                        //SetCbAuthor(listCarReports.ToString().Trim());
+                        //自力のやつ↑
+
+                    }
+                    //コンボボックスの履歴を全て消す
+                    cbAuthor.Items.Clear();
+                    cbCarName.Items.Clear();
+
+                    //コンボボックスの履歴を再登録
+                    foreach (var report in listCarReports) {
+                        SetCbAuthor(report.Author);
+                        SetCbCarName(report.CarName);
+                    }
+
+                } catch (Exception ex) {
+                    tsslbMessage.Text = "設定ファイル読み出しエラー";
+                    MessageBox.Show(ex.Message);//←より具体的のエラーを出力
+                }
             }
         }
     }
