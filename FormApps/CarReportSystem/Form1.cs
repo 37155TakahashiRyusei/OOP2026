@@ -182,9 +182,10 @@ namespace CarReportSystem {
             listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
         }
 
-        private void InputItemUpdate() {
+        private void InputItemsUpdate() {
             if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
-                return;
+                InputitemusallClear();
+                //return;
             }
         }
 
@@ -229,7 +230,7 @@ namespace CarReportSystem {
             tbReport.Text = carReport.Report;
             pbPicture.Image = carReport.Picture;
 
-            InputItemUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+            InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
 
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
