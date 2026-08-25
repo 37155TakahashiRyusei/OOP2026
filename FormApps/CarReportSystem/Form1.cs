@@ -7,40 +7,33 @@ using static CarReportSystem.CarReport;
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
-        //int[] CustomColors;
-
-
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
-        //BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         //設定クラスのオブジェクトを生成
-        //Settings settings = new Settings();
         Settings settings = new Settings();
 
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
-            //CustomColors = new int[] { 0x00FF0000, 0x0000FF00, 0x000000FF };
         }
 
         private void Form1_Load(object sender, EventArgs e) {
             //設定ファイルを読み込み背景色を設定する(逆シリアル化)
             //P286以降を参考にする(ファイル名：setting.xml)
-
             //var filePass = "setting.xml";
-
             //ファイルが存在しているか？
             //P216以降にヒント有り
             if (File.Exists("setting.xml")) {
                 try {
                     using (var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        //var settings = serializer.Deserialize(reader) as Settings;
-                        settings = serializer.Deserialize(reader) as Settings;
-
-                        //背景色設定
-                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+                       
+                        if(serializer.Deserialize(reader) is Settings loadedSettings) {
+                            settings = loadedSettings;
+                            //背景色設定
+                            BackColor = Color.FromArgb(settings.MainFormBackColor);
+                        }
                     }
                 } catch (Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み込みエラー";
