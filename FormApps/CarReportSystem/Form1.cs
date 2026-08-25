@@ -3,7 +3,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
@@ -310,7 +309,15 @@ namespace CarReportSystem {
                         //自力のやつ↑
 
                     }
-                  
+                    //コンボボックスの履歴を全て消す
+                    cbAuthor.Items.Clear();
+                    cbCarName.Items.Clear();
+
+                    //コンボボックスの履歴を再登録
+                    foreach (var report in listCarReports) {
+                        SetCbAuthor(report.Author);
+                        SetCbCarName(report.CarName);
+                    }
 
                 } catch (Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み出しエラー";
