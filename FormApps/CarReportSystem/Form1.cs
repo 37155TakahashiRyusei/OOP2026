@@ -172,9 +172,17 @@ namespace CarReportSystem {
             cbCarName.Text = string.Empty;
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
-            listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
+           
+
+            if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport) {
+                return;
+            }
+            listCarReports.Remove(carReport);
+
+            InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
 
+        //データグリッドビューを更新したら呼ぶメソッド
         private void InputItemsUpdate() {
             if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 InputitemusallClear();
@@ -185,12 +193,17 @@ namespace CarReportSystem {
         private void btModifyRecord_Click(object sender, EventArgs e) {
 
             if (dgvRecords.SelectedRows.Count == 0) {
-                tsslbMessage.Text = "修正するレコードを選択してください";
+                tsslbMessage.Text = "修正するレポートを選択してください";
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(cbAuthor.Text) || string.IsNullOrWhiteSpace(cbCarName.Text)) {
                 tsslbMessage.Text = "記録者、または車名が未入力です";
+                return;
+            }
+
+            if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport) {
+                tsslbMessage.Text = "修正するレポートを選択してください";
                 return;
             }
 
@@ -213,6 +226,7 @@ namespace CarReportSystem {
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
 
             if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport || !dgvRecords.CurrentRow.Selected) {
+
                 return;
             }
 
