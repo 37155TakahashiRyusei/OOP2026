@@ -19,28 +19,15 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            //設定ファイルを読み込み背景色を設定する(逆シリアル化)
-            //P286以降を参考にする(ファイル名：setting.xml)
-            //var filePass = "setting.xml";
-            //ファイルが存在しているか？
-            //P216以降にヒント有り
-            if (File.Exists("setting.xml")) {
-                try {
-                    using (var reader = XmlReader.Create("setting.xml")) {
-                        var serializer = new XmlSerializer(typeof(Settings));
-                       
-                        if(serializer.Deserialize(reader) is Settings loadedSettings) {
-                            settings = loadedSettings;
-                            //背景色設定
-                            BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-                        }
-                    }
-                } catch (Exception ex) {
-                    tsslbMessage.Text = "設定ファイル読み込みエラー";
-                    MessageBox.Show(ex.Message);//←より具体的のエラーを出力
-                }
-            } else {
-                tsslbMessage.Text = "設定ファイルがありません";
+            //背景色を設定する
+            try {
+                Settings.Instance.Load();
+                BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
+
+            } catch (Exception ex) {
+                tsslbMessage.Text = "設定ファイル読み込みエラー";
+                MessageBox.Show(ex.Message);//←より具体的のエラーを出力
+
             }
         }
 
@@ -172,7 +159,7 @@ namespace CarReportSystem {
             cbCarName.Text = string.Empty;
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
-           
+
 
             if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport) {
                 return;
@@ -252,16 +239,17 @@ namespace CarReportSystem {
                 Settings.Instance.MainFormBackColor = cdcolor.Color.ToArgb();
             }
 
-          
+
         }
         //フォームが閉じたら呼ばれるイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            //設定ファイルへ色情報を保存する処理（シリアル化）
-            ////p284以降を参考にする(ファイル名:setting.xml)
-            using (var writer = XmlWriter.Create("setting.xml")) {
-                var seriallizer = new XmlSerializer(Settings.Instance.GetType());
-                seriallizer.Serialize(writer, Settings.Instance);
-            }
+            //設定ファイルへ色情報を保存する処理（シリアル化)
+            //p284以降を参考にする(ファイル名:setting.xml)
+            Settings.Instance.Save();
+            //using (var writer = XmlWriter.Create("setting.xml")) {
+            //    var seriallizer = new XmlSerializer(Settings.Instance.GetType());
+            //    seriallizer.Serialize(writer, Settings.Instance);
+            //}
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {

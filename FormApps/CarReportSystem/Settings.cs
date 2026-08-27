@@ -29,26 +29,26 @@ namespace CarReportSystem {
             }
 
             using var reader = XmlReader.Create(FileName);
-            var serializer = new XmlSerializer(typeof(SetingsData));
+            var serializer = new XmlSerializer(typeof(SettingsData));
 
-            if (serializer.Deserialize(reader) is SetingsData data) {
+            if (serializer.Deserialize(reader) is SettingsData data) {
                 MainFormBackColor = data.MainFoemBackColor;
             }
         }
         //設定ファイルを保存
         public void Save() {
-            var data = new SetingsData {
+            var data = new SettingsData {
                 MainFoemBackColor = MainFormBackColor
             };
 
             using var writer = XmlWriter.Create(FileName);
-            var serializer = new XmlSerializer(typeof(SetingsData));
+            var serializer = new XmlSerializer(typeof(SettingsData));
             serializer.Serialize(writer, data);
         }
     }
 
     //XML保存用のクラス
-    public class SetingsData {
+    public class SettingsData {
         public int MainFoemBackColor { get; set; }
     }
 }
