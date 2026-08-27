@@ -21,6 +21,8 @@ namespace CarReportSystem {
         //外部からnew出来ないようにする
         private Settings() {}
 
+
+        //設定ファイルからロード
         public void Load() {
             if (!File.Exists(FileName)) {
                 return;
@@ -33,7 +35,7 @@ namespace CarReportSystem {
                 MainFormBackColor = data.MainFoemBackColor;
             }
         }
-
+        //設定ファイルを保存
         public void Save() {
             var data = new SetingsData {
                 MainFoemBackColor = MainFormBackColor
