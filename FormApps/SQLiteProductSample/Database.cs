@@ -43,7 +43,7 @@ public static class Database
             );
             """;
 
-        //結果行を返さないSQｌを実行する
+        //結果行を返さないSQLを実行する
         command.ExecuteNonQuery();
     }
 }
