@@ -68,8 +68,31 @@ public partial class Form1 : Form {
     }
 
     private void btDelete_Click(object sender, EventArgs e) {
+        if (dgvProducts.CurrentRow?.DataBoundItem is not Product selectedProduct) {
+
+            tsslMessage.Text = "削除する商品を選択してください";
+            return;
+        }
+        if (MessageBox.Show($"{selectedProduct.Name}を削除しますか？", "削除確認",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question) != DialogResult.Yes ){
+            return;
+        }
+
+        try {
+            _repository.Delete(selectedProduct.Id);
+
+            ReloadProducts();
+            ClearInput();
+
+            tsslMessage.Text = "商品を削除しました";
+        } catch (Exception ex) {
+
+            ShowError("削除エラー", ex);
+        }
 
     }
+
 
     private void btClear_Click(object sender, EventArgs e) {
         ClearInput();
