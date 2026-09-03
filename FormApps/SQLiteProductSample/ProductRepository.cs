@@ -100,7 +100,7 @@ public class ProductRepository {
         }
     }
 
-    public void Delete (int id) {
+    public void Delete(int id) {
         using var connection = Database.GetConnection();
         connection.Open();
 

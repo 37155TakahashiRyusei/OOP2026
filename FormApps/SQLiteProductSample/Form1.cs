@@ -75,7 +75,7 @@ public partial class Form1 : Form {
         }
         if (MessageBox.Show($"{selectedProduct.Name}を削除しますか？", "削除確認",
             MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question) != DialogResult.Yes ){
+            MessageBoxIcon.Question) != DialogResult.Yes) {
             return;
         }
 
