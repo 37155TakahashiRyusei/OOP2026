@@ -38,7 +38,6 @@ public partial class Form1 : Form {
         }
     }
 
-
     private void btUpdate_Click(object sender, EventArgs e) {
         //選択行に紐づくProductを取得
         if (dgvProducts.CurrentRow?.DataBoundItem is not Product selectedProduct) {
