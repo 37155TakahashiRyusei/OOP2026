@@ -28,7 +28,7 @@ public static class Database {
         //DBを開く
         connection.Open();
 
-        //SQLを実行するためのｺﾏﾝﾄﾞオブジェクトうぃ作る
+        //SQLを実行するためのｺﾏﾝﾄﾞオブジェクトを作る
         using var command = connection.CreateCommand();
 
         //Productsテーブルを作るSQL

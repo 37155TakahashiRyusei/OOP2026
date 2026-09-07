@@ -17,7 +17,7 @@ namespace CarReportSystem {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
         }
-
+        
         private void Form1_Load(object sender, EventArgs e) {
             //”wŒiF‚ğİ’è‚·‚é
             try {
