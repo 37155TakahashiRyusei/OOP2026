@@ -1,5 +1,5 @@
 using System.ComponentModel;
-using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
@@ -260,19 +260,27 @@ namespace CarReportSystem {
             reportOpenFile();
         }
 
+       
+
+
+        private readonly CarReportRepository _repository = new();
+
         //ファイルセーブ処理
         private void reportSaveFile() {
             if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
                 try {
                     //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
+                    //#pragma warning disable SYSLIB0011
+                    //                    var bf = new BinaryFormatter();
+                    //#pragma warning restore SYSLIB0011
+
+                    //var serializer = new XmlSerializer(typeof(SaveFileDialog));
+                    
                     using (FileStream fs = File.Open(
                         sfdReportFileSave.FileName,
                         FileMode.Create
                         )) {
-                        bf.Serialize(fs, listCarReports);
+                       
                     }
 
                 } catch (Exception ex) {
@@ -284,26 +292,17 @@ namespace CarReportSystem {
 
         //ファイルオープン処理
         private void reportOpenFile() {
-            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+            
                 try {
-                    //逆シリアル化でバイナリ形式を取り込む
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
+                    //var serializer = new XmlSerializer(typeof(SaveFileDialog));
+                    _repository.GetAll();
                     using (FileStream fs = File.Open(
                         ofdReportFileOpen.FileName, //ファイル名
                         FileMode.Open,  //ファイルモード
                         FileAccess.Read //アクセス
                         )) {
-
-                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        //listCarReports = (BindingList<CarReport>)_repository.Deserialize(fs);
                         dgvRecords.DataSource = listCarReports;
-
-
-                        //SetCbAuthor(listCarReports.ToString().Trim());
-                        //SetCbAuthor(listCarReports.ToString().Trim());
-                        //自力のやつ↑
-
                     }
                     //コンボボックスの履歴を全て消す
                     cbAuthor.Items.Clear();
@@ -319,7 +318,7 @@ namespace CarReportSystem {
                     tsslbMessage.Text = "設定ファイル読み出しエラー";
                     MessageBox.Show(ex.Message);//←より具体的のエラーを出力
                 }
-            }
+            
         }
     }
 }
