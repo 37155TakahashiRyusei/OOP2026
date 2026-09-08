@@ -14,9 +14,11 @@ namespace CarReportSystem {
             = SystemColors.Control.ToArgb();
 
         //唯一のオブジェクトを取得する
-        public static Settings Instance {
-            get { return _instance; }
-        }
+        //public static Settings Instance {
+        //    get { return _instance; }
+        //}
+        public static Settings Instance { get; } = new();
+
 
         //外部からnew出来ないようにする
         private Settings() {}
@@ -51,4 +53,6 @@ namespace CarReportSystem {
     public class SettingsData {
         public int MainFormBackColor { get; set; }
     }
+
+
 }
