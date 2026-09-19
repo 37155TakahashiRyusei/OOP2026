@@ -9,8 +9,7 @@ namespace CarReportSystem {
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Database.Initialize();
-            Application.Run(new Form1());
-
+            
             try {
                 //SQLiteデータベースを初期化する
                 //careports.dbが存在しない場合は作成され

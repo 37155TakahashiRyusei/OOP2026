@@ -1,17 +1,12 @@
 using System.ComponentModel;
-//using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
 using static CarReportSystem.CarReport;
-
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //カーレポート管理用リスト
         //BindingList<CarReport> _carreports = new BindingList<CarReport>();
-        BindingList<CarReport> _carreports = new ();
+        BindingList<CarReport> _carreports = new();
 
         // DB操作を担当するRepository
         private readonly CarReportRepository _repository = new();
@@ -66,7 +61,6 @@ namespace CarReportSystem {
             SetCbCarName(cbCarName.Text.Trim());
 
             dgvRecords.CurrentRow.Selected = false; //セルの選択を解除する
-                                                    //dgvRecords.ClearSelection();  //セルの選択を解除する
 
             InputitemusallClear(); //入力のクリアー
         }
@@ -172,6 +166,7 @@ namespace CarReportSystem {
             if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport) {
                 return;
             }
+            _repository.Delete(carReport.Id);
             _carreports.Remove(carReport);
 
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
@@ -181,7 +176,6 @@ namespace CarReportSystem {
         private void InputItemsUpdate() {
             if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 InputitemusallClear();
-                //return;
             }
         }
 
@@ -249,7 +243,6 @@ namespace CarReportSystem {
         }
 
 
-
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
@@ -261,95 +254,12 @@ namespace CarReportSystem {
                 //変色さえれた色の情報を保存
                 Settings.Instance.MainFormBackColor = cdcolor.Color.ToArgb();
             }
-
-
         }
         //フォームが閉じたら呼ばれるイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            //設定ファイルへ色情報を保存する処理（シリアル化)
-            //p284以降を参考にする(ファイル名:setting.xml)
             Settings.Instance.Save();
-            //using (var writer = XmlWriter.Create("setting.xml")) {
-            //    var seriallizer = new XmlSerializer(Settings.Instance.GetType());
-            //    seriallizer.Serialize(writer, Settings.Instance);
-            //}
         }
-
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
-            reportSaveFile();
-        }
-
-        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
-            reportOpenFile();
-        }
-
-
-
 
         private readonly CarReportRepository repository = new CarReportRepository();
-
-        //ファイルセーブ処理
-        private void reportSaveFile() {
-            try {
-                foreach (var report in _carreports) {
-                    repository.Add(report);
-                }
-            } catch (Exception ex) {
-                tsslbMessage.Text = "ファイル書き出しエラー";
-                MessageBox.Show(ex.Message);
-            }
-                //try {
-                //    XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-
-                //    using (FileStream fs = File.Open(
-                //        sfdReportFileSave.FileName,
-                //        FileMode.Create
-                //        )) {
-                //        serializer.Serialize(fs, listCarReports);
-                //        serializer.Serialize(fs, listCarReports);
-                //    }
-
-                //} catch (Exception ex) {
-                //    tsslbMessage.Text = "ファイル書き出しエラー";
-                //    MessageBox.Show(ex.Message);
-                //}
-        }
-
-
-        //ファイルオープン処理
-        private void reportOpenFile() {
-
-            try {
-                //var serializer = new XmlSerializer(typeof(SaveFileDialog));
-                //バイナリ形式でシリアル化
-                //#pragma warning disable SYSLIB0011
-                //                var bf = new BinaryFormatter();
-                //#pragma warning restore SYSLIB0011
-
-                _repository.GetAll();
-                using (FileStream fs = File.Open(
-                    ofdReportFileOpen.FileName, //ファイル名
-                    FileMode.Open,  //ファイルモード
-                    FileAccess.Read //アクセス
-                    )) {
-                    //listCarReports = (BindingList<CarReport>)_repository.Deserialize(fs);
-                    dgvRecords.DataSource = _carreports;
-                }
-                //コンボボックスの履歴を全て消す
-                cbAuthor.Items.Clear();
-                cbCarName.Items.Clear();
-
-                //コンボボックスの履歴を再登録
-                foreach (var report in _carreports) {
-                    SetCbAuthor(report.Author);
-                    SetCbCarName(report.CarName);
-                }
-
-            } catch (Exception ex) {
-                tsslbMessage.Text = "設定ファイル読み出しエラー";
-                MessageBox.Show(ex.Message);//←より具体的のエラーを出力
-            }
-
-        }
     }
 }
