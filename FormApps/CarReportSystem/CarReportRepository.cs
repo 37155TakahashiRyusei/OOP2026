@@ -108,7 +108,7 @@ namespace CarReportSystem {
                 Date = $date,
                 Author = $author,
                 Maker = $maker,
-                CarName = $carNme,
+                CarName = $carName,
                 Report = $report,
                 Picture = $picture
             WHERE Id = $id;

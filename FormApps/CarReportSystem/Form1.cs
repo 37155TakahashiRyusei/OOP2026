@@ -209,7 +209,8 @@ namespace CarReportSystem {
 
             dgvRecords.Refresh(); //データグリッドビューの更新
             tsslbMessage.Text = "レポートを修正しました";
-            //tsslbMessage.Text = "";
+            _repository.Update(carReport);
+
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
