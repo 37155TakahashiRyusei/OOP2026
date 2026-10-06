@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MvcBasicSample.Models;
 
-namespace MvcBasicSample.Controllers.Datya;
+namespace MvcBasicSample.Controllers.Data;
 public class AppDbContext : DbContext {
 
     // Program.cs で登録した接続設定を受け取る
