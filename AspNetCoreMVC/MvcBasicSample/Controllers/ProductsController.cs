@@ -15,7 +15,7 @@ public class ProductsController : Controller {
     public async Task<IActionResult> Index() {
         // Idの昇順で取得し結果をList<Product>にする
         var products = await _db.Products
-            .Where(product => product.Price >= 500)
+            //.Where(product => product.Price > 500)
             .OrderBy(product => product.Price)
             .ToListAsync();
 
