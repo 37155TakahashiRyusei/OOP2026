@@ -1,7 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using SelfOrderSystem.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+//Å@í«â¡
+builder.Services.AddDbContext<AppDbContext>(
+        options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    );
+/////////
+
+
 
 var app = builder.Build();
 
