@@ -41,18 +41,14 @@ namespace Exercise01_WPF {
              new StreamReader(fileName, Encoding.UTF8)) {
                 return await sr.ReadToEndAsync();
             }
+
+            //var sb = new StringBuilder();
+            //var sb = new StringReader(fileName);
+            //while(!sr.EndOfStream) {
+            //    var line = await sr.ReadLineAsync();
+            //    sb.AppendLine(line);
+            //}
+            //return sb.ToString();
         }
-        //var sb = new StringBuilder();
-
-        ////ここに非同期でテキストファイルを読み込む処理を記述する
-        //StreamReader sr = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
-        //     string str =await sr.ReadToEndAsync();
-
-        ////string str = sr.ReadToEnd();
-        ////sr.Close();
-        ////Console.WriteLine(str);
-        ////Console.ReadKey();
-        //return await sr.ReadToEndAsync();
-        ////return sb.ToString();
     }
 }
