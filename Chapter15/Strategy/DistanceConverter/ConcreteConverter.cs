@@ -16,7 +16,7 @@ public class MeterConverter : ConverterBase {
 
 public class FeetConverter : ConverterBase {
     public override bool IsMyUnit(string name) =>
-        name.Equals("feet", StringComparison.OrdinalIgnoreCase)|| name == UnitName;
+        name.Equals("feet", StringComparison.OrdinalIgnoreCase) || name == UnitName;
 
     protected override double Ratio => 0.3048;
     public override string UnitName => "フィート";
@@ -31,7 +31,6 @@ public class InchConverter : ConverterBase {
     protected override double Ratio => 0.0254;
     public override string UnitName => "インチ";
 
-
 }
 
 public class YardConverter : ConverterBase {
@@ -40,6 +39,22 @@ public class YardConverter : ConverterBase {
 
     protected override double Ratio => 0.9144;
     public override string UnitName => "ヤード";
+}
+
+public class MileConverter : ConverterBase {
+    public override bool IsMyUnit(string name) =>
+         name.Equals("mile", StringComparison.OrdinalIgnoreCase) || name == UnitName;
+
+    protected override double Ratio => 1609.34;
+    public override string UnitName => "マイル";
+}
+
+public class KilometerConverter : ConverterBase {
+    public override bool IsMyUnit(string name) =>
+         name.Equals("kilometer", StringComparison.OrdinalIgnoreCase) || name == UnitName;
+
+    protected override double Ratio => 1000.0;
+    public override string UnitName => "キロメートル";
 }
 
 
