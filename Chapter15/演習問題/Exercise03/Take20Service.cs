@@ -15,12 +15,11 @@ namespace Exercise03 {
             //_count = 0;
         }
 
-        public void Execute(string line) {
-            if(_count < 20) {
-                Console.WriteLine(line);
-                _count++;
-            }
-            
+        public bool Execute(string line) {
+            Console.WriteLine(line);
+            _count++;
+
+            return _count < 20;
         }
 
         public void Terminate() {

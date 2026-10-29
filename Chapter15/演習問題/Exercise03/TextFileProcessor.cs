@@ -14,23 +14,14 @@ namespace Exercise03 {
         }
 
         public void Run(string fileName) {
-
-
             _service.Initialize(fileName);
             var lines = File.ReadLines(fileName);
-            //int cnt = 0;
-
-            //if (cnt < 20) {
-            //    cnt++;
-            //    _service.Execute(lines);
-            //} else {
-            //    foreach (var line in lines) {
-            //        _service.Execute(line);
-            //    }
-            //}
 
             foreach (var line in lines) {
-                _service.Execute(line);
+               // bool ret = _service.Execute(line);
+                if (!_service.Execute(line)) {
+                   break;
+                } 
             }
 
             _service.Terminate();
