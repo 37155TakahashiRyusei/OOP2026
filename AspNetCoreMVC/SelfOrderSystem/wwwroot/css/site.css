@@ -20,3 +20,176 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* AIデザイン演習用の追加スタイル */
+/*:root {
+    --brand-color: #32cd32;
+    --page-bg: #f7f6f1;
+}
+
+body {
+    background: var(--page-bg);
+}
+
+h1, h2 {
+    color: var(--brand-color);
+}
+
+.btn-success {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+
+    .btn-success:hover {
+        background-color: #2b4535;
+        border-color: #2b4535;
+    }*/
+
+
+
+
+/* ===== Futuristic Theme ===== */
+
+/* ========================================
+   Futuristic Green Theme
+   ======================================== */
+
+:root {
+    --main-bg: #0a0f0a;
+    --card-bg: rgba(15, 20, 15, 0.9);
+    /* 蛍光グリーン */
+    --accent: #39ff14;
+    --accent-glow: rgba(57, 255, 20, 0.7);
+    --text-main: #e6ffe6;
+    --text-sub: #7faa7f;
+}
+
+body {
+    background: linear-gradient(135deg, #050805, #101810);
+    color: var(--text-main);
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5 {
+    color: var(--accent);
+    text-shadow: 0 0 5px var(--accent-glow), 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+}
+
+/* ナビゲーションバー */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    border-bottom: 1px solid var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--accent) !important;
+}
+
+    .nav-link:hover {
+        text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+/* カード */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+    border-radius: 15px;
+    color: var(--text-main);
+    box-shadow: 0 0 15px rgba(57,255,20,0.15);
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        box-shadow: 0 0 25px var(--accent-glow);
+        transform: translateY(-3px);
+    }
+
+/* ボタン */
+.btn-primary,
+.btn-success,
+.btn-outline-primary,
+.btn-outline-success {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover,
+    .btn-success:hover,
+    .btn-outline-primary:hover,
+    .btn-outline-success:hover {
+        background-color: var(--accent);
+        color: black;
+        box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+    }
+
+/* テーブル */
+.table {
+    color: var(--text-main);
+}
+
+    .table thead {
+        background-color: rgba(57,255,20,0.15);
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(57,255,20,0.08);
+    }
+
+/* 入力フォーム */
+.form-control {
+    background-color: #101510;
+    border: 1px solid var(--accent);
+    color: var(--text-main);
+}
+
+    .form-control:focus {
+        background-color: #101510;
+        color: white;
+        border-color: var(--accent);
+        box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+/* 商品カード用 */
+.menu-item {
+    transition: all 0.3s ease;
+}
+
+    .menu-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px var(--accent-glow);
+    }
+
+/* 合計金額表示 */
+.total-price {
+    color: var(--accent);
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--accent-glow), 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+}
+
+/* リンク */
+a {
+    color: var(--accent);
+}
+
+    a:hover {
+        color: #7fff6b;
+    }
+
+/* コンテナ */
+.container {
+    color: var(--text-main);
+}
+
+/* フッター */
+footer {
+    border-top: 1px solid var(--accent);
+    color: var(--text-sub);
+}
