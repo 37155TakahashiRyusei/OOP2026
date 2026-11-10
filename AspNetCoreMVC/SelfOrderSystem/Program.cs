@@ -27,8 +27,8 @@ builder.Services.AddSession(options => {
 
 builder.Services.AddHttpContextAccessor();                       // HttpContextをServiceで取得 
 builder.Services.AddScoped<CartService>();                       // CartServiceをDIへ登録 
-/////////
 
+builder.Services.AddScoped<IOrderService, OrderService>(); //サービス層を作成したことによる追加
 
 var app = builder.Build();
 
