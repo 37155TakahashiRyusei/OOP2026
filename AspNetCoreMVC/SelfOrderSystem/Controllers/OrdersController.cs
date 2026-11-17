@@ -86,7 +86,7 @@ public class OrdersController : Controller {
         var publicId = HttpContext.Session.GetString("LastOrderPublicId");
 
         //IDがなければメニューへ移動する
-        if (Guid.TryParse(publicId, out var id)) {
+        if (!Guid.TryParse(publicId, out var id)) {
             return RedirectToAction("Index", "Menu");
         }
         //既存のStatus画面へ移動する
