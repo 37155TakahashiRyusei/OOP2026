@@ -1,47 +1,161 @@
-html {
-  font-size: 14px;
+/* ========================================
+   FUTURISTIC GREEN THEME
+======================================== */
+
+:root {
+    --accent: #39ff14;
+    --accent-light: #7fff6b;
+    --bg-main: #0b0f0c;
+    --bg-card: #131813;
+    --text-main: #eaffea;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* 画面全体 */
 body {
-  margin-bottom: 60px;
+    background: linear-gradient(135deg, #050805, #101810);
+    color: var(--text-main);
 }
 
-/* 商品写真を一定の高さで表示 */
-.so-product-photo {
-    display: block;
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
-    background: #f0eee9;
-}
-/* 写真の登録がない商品に表示 */
-.so-product-photo--empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 0.95rem;
+/* メニュータイトル */
+h1 {
+    color: var(--accent);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
 }
 
-/*PCではカートをスクロールに追従させる*/
-@media (min-width: 992px) {
-    .so-cart-sidebar {
-        position: sticky;
-        top: 90px;
+    h1::after {
+        content: "";
+        display: block;
+        width: 250px;
+        height: 2px;
+        margin-top: 10px;
+        background: var(--accent);
+        box-shadow: 0 0 10px var(--accent);
     }
+
+/* カテゴリボタン */
+.btn-dark {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: black;
+    font-weight: bold;
+}
+
+.btn-outline-dark {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+    .btn-outline-dark:hover {
+        background-color: var(--accent);
+        color: black;
+        box-shadow: 0 0 10px var(--accent);
+    }
+
+/* 商品カード */
+.card {
+    background: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid rgba(57,255,20,.4);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all .3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 10px rgba(57,255,20,.4), 0 0 25px rgba(57,255,20,.25);
+    }
+
+/* 商品画像 */
+.so-product-photo {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* 商品名 */
+.card-body h2 {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* 商品説明 */
+.text-muted {
+    color: #c0d0c0 !important;
+}
+
+/* 値段 */
+.fs-5.fw-bold {
+    color: var(--accent);
+    font-size: 2rem !important;
+    text-shadow: 0 0 5px rgba(57,255,20,.5);
+}
+
+/* カート追加ボタン */
+.btn-primary {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-weight: bold;
+}
+
+    .btn-primary:hover {
+        background: var(--accent);
+        color: #000;
+        box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+    }
+
+/* 売り切れボタン */
+.btn-secondary {
+    border-radius: 10px;
+}
+
+/* 右側カート */
+.so-cart-sidebar {
+    position: sticky;
+    top: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--accent);
+    border-radius: 18px;
+    color: var(--text-main);
+    box-shadow: 0 0 15px rgba(57,255,20,.15);
+}
+
+    .so-cart-sidebar h2 {
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    .so-cart-sidebar .fw-bold {
+        font-size: 1.5rem;
+        color: var(--accent);
+    }
+
+/* エラーメッセージ */
+.alert-danger {
+    border: 1px solid #ff4444;
+    background: #2c1010;
+    color: #ff9999;
+}
+
+/* カート件数表示 */
+.alert-dark {
+    border: 1px solid var(--accent);
+    background: var(--bg-card);
+    color: var(--text-main);
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
 }
