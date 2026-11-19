@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR; // Hub の基本機能 
 namespace SelfOrderSystem.Hubs;
+
 // 店舗画面と注文状況画面が接続するHub 
 public class StaffOrdersHub : Hub {
     

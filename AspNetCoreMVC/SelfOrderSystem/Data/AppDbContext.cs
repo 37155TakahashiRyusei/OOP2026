@@ -9,7 +9,7 @@ public class AppDbContext : DbContext {
    : base(options) { //受け取った設定を親クラスへ渡す
     }
 
-    //Categories テーブルをCategory型として問い合わせるためのプロパティ
+    //データベースの各テーブルをC#から問い合わせるためのプロパティ
     public DbSet<Category> Categories => Set<Category>();        // カテゴリ 
 
     //Products テーブルをProduct型として問い合わせるためのプロパティ
@@ -18,6 +18,8 @@ public class AppDbContext : DbContext {
     public DbSet<Order> Orders => Set<Order>();
 
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+
+    public DbSet<StaffUser> StaffUsers => Set<StaffUser>(); //追加
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
@@ -31,5 +33,9 @@ public class AppDbContext : DbContext {
             .WithMany()
             .HasForeignKey(i => i.ProductId)
             .OnDelete(DeleteBehavior.Restrict); // 注文履歴を保護
+
+        modelBuilder.Entity<StaffUser>() //追加
+            .HasIndex(u => u.UserName)
+            .IsUnique();
     }
 }

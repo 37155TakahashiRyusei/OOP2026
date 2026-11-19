@@ -23,15 +23,15 @@ h1 {
     text-shadow: 0 0 5px var(--accent), 0 0 10px var(--accent);
 }
 
-    h1::after {
+/*    h1::after {
         content: "";
         display: block;
         width: 250px;
         height: 2px;
-        margin-top: 10px;
+        margin: 10px auto 0;
         background: var(--accent);
         box-shadow: 0 0 10px var(--accent);
-    }
+    }*/
 
 /* カテゴリボタン */
 .btn-dark {
@@ -159,3 +159,22 @@ h1 {
     background: var(--accent);
     border-radius: 10px;
 }
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #050805, #101810);
+    color: var(--text-main);
+}
+
+.footer {
+    position: static;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 0;
+    text-align: left;
+}
+
