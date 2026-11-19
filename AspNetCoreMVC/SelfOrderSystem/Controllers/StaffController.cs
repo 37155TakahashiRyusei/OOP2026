@@ -76,7 +76,6 @@ public class StaffController : Controller {
             // 保存した注文状態は取り消さない 
             _logger.LogWarning(ex, "状態更新の通知に失敗");
         }
-
         return RedirectToAction(nameof(Index)); // 一覧へ戻る 
     }
 }
