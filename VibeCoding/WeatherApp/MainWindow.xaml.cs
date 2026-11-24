@@ -37,7 +37,6 @@ namespace WeatherApp {
                         $"降水:{forecast.PrecipitationProbability}%");
 
                     }
-
                 } catch (Exception ex) {
                         MessageBox.Show(
                         $"通信エラー\n{ex.Message}",
