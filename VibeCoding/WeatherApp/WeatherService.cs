@@ -63,10 +63,13 @@ namespace WeatherApp {
                     .GetProperty("wind_speed_10m")
                     .GetDouble(),
 
-                Weather = GetWeatherDescription( doc.RootElement
+                Weather = GetWeatherDescription(doc.RootElement
                         .GetProperty("current")
                         .GetProperty("weather_code")
-                        .GetInt32())
+                        .GetInt32()),
+
+                Forecasts = forecasts
+
             };
         }
 
